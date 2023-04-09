@@ -4,12 +4,8 @@ include("layouts/header.php");
 ?>
 
 
-<h1>Accede a nuestra casa!</h1>
-<form class="formSinLogin" action="" method="">
-    <h2>Entra sin resgistrar:</h2>
-    <input id="submit" type="submit" name="btn" value="Visitar Como x Casa">
-    <input id="submit" type="hidden" name="opcion" value="entrar_sin_login">
-</form>
+<h1>ALGO</h1>
+
 <?php if (!empty($resVacia)) { ?>
     <!--en caso de no encontrar usuario-->
     <h2 class="aviso"><?php echo $resVacia; ?> </h2>
@@ -30,6 +26,8 @@ include("layouts/header.php");
 
             $_SESSION['dni'] = $_POST['dni'];
             $_SESSION['password'] = $_POST['password'];
+            echo $_SESSION['dni'] ;
+            echo $_SESSION['password'];
         }
         ?>
 

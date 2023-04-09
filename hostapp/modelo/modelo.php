@@ -1,4 +1,6 @@
 <?php
+include('conexion.php');
+include('session.php');
 
 class Modelo{
     private $Modelo;
@@ -7,17 +9,14 @@ class Modelo{
 
     public function __construct()
     {
-        $servername='localhost';
-        $username='victorDB';
-        $password='victorDB';
-        $database='restaurante';
         $this->Modelo = array();
-        $this->db = new PDO("mysql:host=$servername; dbname=$database", $username, $password);
+        $this->db = conectar_param_pdo('restaurante');
     }
 
     public function insertar($tabla, $campos,$data){
         $consulta="insert into ".$tabla. " " . $campos ." values(". $data .")";
-        echo "<br> insertar: ".$consulta;
+        echo " consulta: " .$consulta;
+
         $resultado=$this->db->query($consulta);
         if ($resultado) {
             return true;
@@ -27,26 +26,44 @@ class Modelo{
      }
 
 
-     public function mostrar($tabla,$condicion){
-        $consul="select * from ".$tabla." where ".$condicion.";";
-        echo $consul;
+     public function mostrar($tabla, $campos, $condicion){
+        $consul="select " .$campos. " from ".$tabla." where ".$condicion.";";
             $resu=$this->db->query($consul);
+            echo " Consulta mostrar: ".$consul;
             while($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
                 $this->datos[]=$filas;
             }
             return $this->datos;
     }
-    
-    public function actualizar($tabla, $data, $condicion){       
-        $consulta="update ".$tabla." set ". $data ." where ".$condicion;
-        $resultado=$this->db->query($consulta);
+
+    /**
+     * Función genérica de actualizacion - update
+     */
+    public function actualizar($tabla, $data, $condicion)
+    {
+        //inicio creacio sql update
+        $sql = "update " . $tabla . " set ";
+        //array opara recoger los campos que se quieren actualizar
+        $ar_campos = array();
+        //Y transformamos a posiciones de array en formato para sql
+        foreach ($data as $campo => $value) {
+            //transformamos a posiciones de array en formato para sql
+            $ar_campos[] = $campo . " = " . "'" . $value . "'";
+        }
+        //Utilizamos implode para generar un strig y concatenar a la sql
+        $sql .= implode(",", $ar_campos);
+        //añadimos el where
+        $sql .= " where " . $condicion;
+
+        echo "consulta actualizar: ". $sql;
+
+        $resultado = $this->db->query($sql);
         if ($resultado) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-
     public function eliminar($tabla, $condicion){
         $eli="delete from ".$tabla." where ".$condicion;
         $res=$this->db->query($eli);
@@ -56,6 +73,24 @@ class Modelo{
             return false;
         }
     }
+
+    public function mostrar_reservas_admin(){
+         $consul="SELECT res.id as id, res.nombre as nombre_reserva, res.fecha_reserva as fecha_reserva, res.email_usuario as email_reserva, res.id_usuario as id_usuario,
+         us.nombre as nombre_usuario, us.dni as dni_usuario, us.email as email_usuario, us.apellido as apellido,
+         m.nombre_menu as nombre_menu, m.entrante as entrante, m.plato_principal as plato_principal
+         FROM reservas res 
+         INNER JOIN usuarios us
+         ON res.id_usuario = us.id
+         INNER JOIN menu m 
+         ON m.id = res.id_menu;";
+ 
+         $resu=$this->db->query($consul);
+         echo " Consulta mostrar: ".$consul;
+         while($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
+             $this->datos[]=$filas;
+         }
+         return $this->datos;
+     }
 }
 
 ?>
