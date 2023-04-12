@@ -9,6 +9,9 @@ include("layouts/header.php");
 
 <?php
 if (!empty($usuario)) { ?>
+<header>  
+
+</header>
 <section>
     <h1>Bienvenido/a:</h1>
     <?php

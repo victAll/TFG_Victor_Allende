@@ -5,7 +5,17 @@
    
 ?>
 
+<header>  
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=menu" class="navbar-brand">Crear Menu</a>
+    <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=menu&id_admin=<?php echo $v['id']; ?>" class="navbar-brand">Ver Menu</a>
+    <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $v['id']; ?>" class="navbar-brand">Mostrar Reservar</a>
+    <a id="submit_a" href="index.php?opcion=salir" class="navbar-brand">Cerrar sesión</a>
+  </div>
+</nav>
 
+</header>
 <h1>Modificar Menú</h1>
 
 <div class="wraper_modificar">

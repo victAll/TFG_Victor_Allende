@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<link>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HostApp</title>
-    <!--<link rel="stylesheet" type="text/css" href="vista/css/style.css">-->
+    <link rel="stylesheet" type="text/css" href="<?php print HTTP; ?>css/style.css">
     <style>
     /*
  Estilos globales
  */
 
-    * {
+  /*  * {
         margin: 0;
         padding: 0;
         border: 0;
     }
 
     .fieldsForm {
-
         height: 35px;
     }
-    .aviso{
+
+    .aviso {
         height: 35px;
         padding-bottom: 3%;
         color: red;
     }
 
     /*
- Estilo para elemento html
- */
+Estilo para elemento html
+*/
 
     html {
         background-image: linear-gradient(#f5fafaf8, #f7ebeb);
@@ -42,7 +42,7 @@
     }
 
     .btn {
-        background-color: rgb(41, 243, 14);
+        background-color: rgb(75, 129, 245);
         color: black;
         padding: 10px 20px;
         display: inline-block;
@@ -50,9 +50,8 @@
     }
 
     .btn:hover {
-        background-color: rgb(19, 193, 38);
+        background-color: rgb(110, 148, 230);
         color: white;
-        border-radius: 40%;
     }
 
     .main-nav a label {
@@ -65,8 +64,8 @@
     }
 
     /*
- Estilo para elemento body
- */
+Estilo para elemento body
+*/
 
     body {
         font-family: Verdana, Geneva, sans-serif;
@@ -76,14 +75,14 @@
     }
 
     /*
- Estilo para elemento header
- */
+Estilo para elemento header
+*/
+
     .principal {
         display: flex;
         flex-direction: column;
         width: 50%;
     }
-
 
     header {
         display: flex;
@@ -114,7 +113,7 @@
         margin: 1%;
     }
 
-    .formSinLogin{
+    .formSinLogin {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -127,7 +126,6 @@
         margin: 1%;
     }
 
-
     .wraper_modificar {
         display: flex;
         justify-content: center;
@@ -138,7 +136,9 @@
 
     .wraper_form {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         padding: 10px;
         margin: 1%;
         width: 100%;
@@ -169,8 +169,8 @@
     }
 
     /*
- Estilo para elemento footer
- */
+Estilo para elemento footer
+*/
 
     footer {
         display: flex;
@@ -183,7 +183,6 @@
         border-radius: 10px;
         margin: 1%;
     }
-
 
     #submit {
         font-weight: bold;
@@ -206,16 +205,8 @@
     }
 
     #submit:hover {
-        background-color: rgb(54, 144, 12);
+        background-color: rgb(71, 140, 219);
         color: white;
-        border-radius: 40%;
-    }
-
-    #submit_a:hover {
-        background-color: rgb(54, 144, 12);
-        ;
-        color: white;
-        border-radius: 40%;
     }
 
     .main-nav {
@@ -315,16 +306,14 @@
         flex-direction: column;
         flex-wrap: wrap;
         justify-content: space-between;
-        width: 60%;
+        width: 100%;
         height: 100%;
-        padding-left: 30%;
     }
 
-    header {
+    /*header {
         flex-direction: column;
         height: 15%;
-    }
-
+    }*/
 
     .control_central {
         float: right;
@@ -332,25 +321,101 @@
         flex-direction: column;
         height: 50%;
         width: 65%;
-        
     }
 
-    .muestraReservas{
+    .muestraReservas {
         width: 80%;
     }
 
-    .contenedorReservas{
+    .contenedorReservas {
         display: flex;
         justify-content: center;
     }
+
+    .menuNav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: end;
+        width: 100%;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+
+    /**CARTA */
+      /*FRestaurante*/
+    
+    .wrap {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .column-2.carta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1rem;
+        row-gap: 1rem;
+    }
+    
+    .plato-carta {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+    }
+    
+    .img-plato-carta {
+        display: flex;
+        flex-basis: 25%;
+        justify-content: center;
+    }
+    
+    .img-plato-carta img {
+        max-width: 100px;
+        max-height: 75px;
+    }
+    
+    .title-plato-carta {
+        border: 1px solid #e5e5e5;
+        border-bottom: none;
+        border-top: none;
+        flex-basis: 60%;
+        padding: 0 1rem;
+    }
+    
+    .precio-plato-carta {
+        display: flex;
+        flex-basis: 15%;
+        justify-content: center;
+        font-weight: bold;
+    }
+    
+    /*
+Estilo e imagen para elemento con class seccion1
+*/
+.parallax {
+    background: #fff fixed no-repeat 50% 50%;
+    background-size: cover;
+}
+#section1 {
+    background-image: url('./vista/res/img_1.jpg');
+
+ 
+}
+
+    @media (max-width:680px) {
+        .column-2.carta {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }*/
     </style>
 </head>
 
 <body>
-<header>
-        <h1>Como x Casa</h1>
-        <h1>Restaurant</h1>
-</header>
+
+
     <!--<section>
         <div class="wraper">
             <div class="avisos">
@@ -431,4 +496,3 @@
             </div>
         </div>
     </section>-->
-

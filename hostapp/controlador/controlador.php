@@ -27,9 +27,7 @@ class ModeloController{
         $data = " dni= '" . $dni. "'";
         $volver = new Modelo();
         $usuario = $volver->mostrar('usuarios',"*", $data);
-        echo " DATA: ".$data;
-        
-        echo " DATA SESSION: ".$_SESSION['dni'];
+
         if($redireccion == 'reserva'){
             require_once("vista/bienvenida.php");
         }else{
@@ -61,16 +59,24 @@ class ModeloController{
             foreach ($usuario as $key => $value) :
                 foreach ($value as $v) :
                     if($v['tipo_usuario']  == 'n'){
-                        echo " normal: ".$v['tipo_usuario'] ;
                         require_once("vista/bienvenida.php");
                     } else {
-                        echo " admin: ".$v['tipo_usuario'] ;
                         require_once("vista/bienvenida_admin.php");
                     }
                 endforeach;
             endforeach;
         }
     }
+
+    function registro(){
+        require_once("vista/registro.php");
+    }
+
+    function volverLogin(){
+        require_once("vista/login.php");
+    }
+
+
     /**
      * Registramos un nuevo cliente
      */
@@ -84,20 +90,22 @@ class ModeloController{
         $campos = " (nombre, apellido, dni, email, password, tipo_usuario) ";
 
         $data = "'" . $nombre . "' ,'" . $apellido . "','" . $dni . "','" . $correo . "','" . $password . "','" . $tipo . "'";
-        echo "data" .$data ;
+
         $registrar = new Modelo();
 
         //validar si el usuario existe antes de registrar
         $usuario = $registrar->mostrar("usuarios","*","dni=".$dni);
         if ($usuario != null) {
-            echo "usuario ".$usuario;
-            $resExiste = "El usuario con dni: " . $dni . " ya está registrado, intentelo nuevamente...";
-            header("location:".urlsite);
+
+            $resExiste = "El usuario con dni: " . $dni . " ya está registrado, inténtalo nuevamente...";
+            //header("location:".urlsite);
+            
+            require_once("vista/registro.php");
         } else {
             
             $registrar->insertar(" usuarios ",$campos, $data );
             $usuario = $registrar->mostrar("usuarios","*","dni=".$dni);
-            echo"sin usuario, se crea: ". print_r($usuario)." <br>";
+
             require_once("vista/bienvenida.php");
         }
 
@@ -110,7 +118,7 @@ class ModeloController{
         $redireccion = $_GET['redireccion'];
         $dni = $_SESSION['dni'];
         $data = " dni= '" . $dni. "'";
-        echo "DNI: ".$dni;
+
         $reservar = new Modelo();
         $usuario = $reservar->mostrar('usuarios', "*", $data);
         $menu = $reservar->mostrar('menu', "*", 1);
@@ -248,7 +256,7 @@ class ModeloController{
             else{
                 $dni = $_SESSION['dni'];
                 $id_admin = $_GET['id_admin'];
-                echo " aqui ";
+
                 $menus = $delete->mostrar(" menu ", " * ", " id_admin = '" . $id_admin . "'");
                 $creador = $delete->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
                 require_once("vista/mostrar_menu.php");
@@ -270,7 +278,7 @@ class ModeloController{
         $camposMenu = " (id_admin ,nombre_menu, entrante, plato_principal) ";
         $data = $id_admin . ", '" . $nombre_menu . "' ,'" . $entrante . "', '" . $principal . "'";
         $menu = new Modelo();
-        echo " LLAMADA A INSERTAR ";
+
         $menu->insertar(" menu ", $camposMenu, $data);
 
         //volvemos a mostrar reservas una vez hecha la reserva

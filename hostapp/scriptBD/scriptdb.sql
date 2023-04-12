@@ -1,3 +1,10 @@
+/*cd C:\xampp\mysql\bin\
+ mysql -h localhost -u root -p 
+ 
+ 
+ show tables;
+ describe administrador;*/
+
 CREATE DATABASE restaurante;
 
 USE restaurante; 

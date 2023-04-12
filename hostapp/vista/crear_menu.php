@@ -48,7 +48,7 @@ include("layouts/header.php");
 
 </div>
 <div class="wraper_reserva">
-    <a class="btn" href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>" class="btn">Volver</a>
+    <a class="btn" href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>&redireccion=menu" class="btn">Volver</a>
 </div>
 
 

@@ -15,7 +15,6 @@ class Modelo{
 
     public function insertar($tabla, $campos,$data){
         $consulta="insert into ".$tabla. " " . $campos ." values(". $data .")";
-        echo " consulta: " .$consulta;
 
         $resultado=$this->db->query($consulta);
         if ($resultado) {
@@ -29,7 +28,6 @@ class Modelo{
      public function mostrar($tabla, $campos, $condicion){
         $consul="select " .$campos. " from ".$tabla." where ".$condicion.";";
             $resu=$this->db->query($consul);
-            echo " Consulta mostrar: ".$consul;
             while($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
                 $this->datos[]=$filas;
             }
@@ -54,8 +52,6 @@ class Modelo{
         $sql .= implode(",", $ar_campos);
         //añadimos el where
         $sql .= " where " . $condicion;
-
-        echo "consulta actualizar: ". $sql;
 
         $resultado = $this->db->query($sql);
         if ($resultado) {
@@ -85,7 +81,6 @@ class Modelo{
          ON m.id = res.id_menu;";
  
          $resu=$this->db->query($consul);
-         echo " Consulta mostrar: ".$consul;
          while($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
              $this->datos[]=$filas;
          }
