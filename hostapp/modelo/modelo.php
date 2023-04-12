@@ -10,7 +10,7 @@ class Modelo{
     public function __construct()
     {
         $this->Modelo = array();
-        $this->db = conectar_param_pdo('restaurante');
+        $this->db = conectar_param_pdo('hostapp');
     }
 
     public function insertar($tabla, $campos,$data){

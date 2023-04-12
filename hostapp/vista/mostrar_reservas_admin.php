@@ -5,7 +5,49 @@
    
     ?>
 
+<?php
+if (!empty($creador)) { ?>
+<?php
+    foreach ($creador as $key => $value) :
+        foreach ($value as $v) :
+        $id = $v['id'];
+        ?>
+<header>
+    <nav class="menuNav">
+        <div class="icon">
+            <a class="navbar-logo" href="#">
+                <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+            </a>
+        </div>
+        <div class="opcionMenuDiv">
+        <a id="submit_a" class="btn" href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>&redireccion=menu" class="btn">Inicio</a>
+        <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=menu" class="btn">Crear Menu</a>
+        <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=menu&id_admin=<?php echo $id; ?>"
+            class="btn">Ver Menu</a>
+        <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
+        <div>
+            <?php echo $v['nombre'] . " ";
+                echo $v['apellido'] . " ";
+                echo $_SESSION['dni'];  ?>
+        </div>
 
+        </div>
+    </nav>
+    
+
+</header>
+
+<?php
+        endforeach;
+    endforeach;
+
+    ?>
+
+
+
+<?php
+} 
+?>
 
 <div class="contenedorReservas">
     <div class="muestraReservas">
@@ -15,7 +57,8 @@
 
         <h2><?php echo @$_SESSION['nombre']; ?> <?php echo @$_SESSION['apellido']; ?></h2>
         <br>
-        <td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $_SESSION['dni']; ?>&redireccion=menu" class="btn">Volver</a></td>
+        <!--<td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $_SESSION['dni']; ?>&redireccion=menu"
+                class="btn">Volver</a></td>-->
         <br>
         <?php
     } ?>
@@ -44,7 +87,7 @@
                     <td><?php echo $valor['nombre_reserva']; ?></td>
                     <td><?php echo $valor['fecha_reserva']; ?></td>
                     <td><?php echo $valor['email_reserva']; ?></td>
-                    <td><?php echo $valor['nombre_usuario'];?>  <?php echo $valor['apellido']; ?></td>
+                    <td><?php echo $valor['nombre_usuario'];?> <?php echo $valor['apellido']; ?></td>
                     <td><?php echo $valor['dni_usuario']; ?></td>
                     <td><?php echo $valor['email_usuario']; ?></td>
                     <td><?php echo $valor['nombre_menu']; ?></td>
@@ -62,7 +105,7 @@
                 }
             } else { ?>
                 <tr>
-                    <td colspan="5"> No hay reservas...</td>
+                    <td colspan="10"> No hay reservas...</td>
                 </tr>
 
                 <?php

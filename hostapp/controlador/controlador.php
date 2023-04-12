@@ -27,6 +27,7 @@ class ModeloController{
         $data = " dni= '" . $dni. "'";
         $volver = new Modelo();
         $usuario = $volver->mostrar('usuarios',"*", $data);
+        $menu = $volver->mostrar(" menu ", " * ", 1);
 
         if($redireccion == 'reserva'){
             require_once("vista/bienvenida.php");
@@ -274,9 +275,10 @@ class ModeloController{
         $nombre_menu = $_POST['nombre_menu'];
         $entrante = $_POST['entrante_menu'];
         $principal = $_POST['principal_menu'];
+        $precio = $_POST['precio_menu'];
 
-        $camposMenu = " (id_admin ,nombre_menu, entrante, plato_principal) ";
-        $data = $id_admin . ", '" . $nombre_menu . "' ,'" . $entrante . "', '" . $principal . "'";
+        $camposMenu = " (id_admin ,nombre_menu, entrante, plato_principal, precio) ";
+        $data = $id_admin . ", '" . $nombre_menu . "' ,'" . $entrante . "', '" . $principal . "', '" . $precio . "'";
         $menu = new Modelo();
 
         $menu->insertar(" menu ", $camposMenu, $data);
@@ -290,8 +292,10 @@ class ModeloController{
 
     function editar_menu(){
         $id_menu = $_GET['id'];
+        $id_admin = $_GET['id_admin'];
         $menu = new Modelo();
         $menuEditar = $menu->mostrar(" menu ","*", "id = " . $id_menu);
+        $creador = $menu->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
         require_once("vista/actualizar_menu.php");
     }
 
@@ -302,12 +306,13 @@ class ModeloController{
         $nombre_menu = $_GET['nombre_menu'];
         $entrante = $_GET['entrante'];
         $plato_principal = $_GET['plato_principal'];
-        $data = " nombre_menu , entrante , plato_principal values ('" . $nombre_menu . "','" . $entrante . "','" . $plato_principal . "') ";
+        $precio = $_GET['precio_menu'];
+        $data = " nombre_menu , entrante , plato_principal, precio values ('" . $nombre_menu . "','" . $entrante . "','" . $plato_principal . "','" . $precio . "') ";
         $condicion = "id = " . $id;
 
         $update = new Modelo();
 
-        $data = array("nombre_menu" => $nombre_menu, "entrante" => $entrante, "plato_principal" => $plato_principal);
+        $data = array("nombre_menu" => $nombre_menu, "entrante" => $entrante, "plato_principal" => $plato_principal, "precio" => $precio);
 
         $update->actualizar(" menu ", $data, $condicion);
         //volvemos a mostrar menu una vez hecha la reserva

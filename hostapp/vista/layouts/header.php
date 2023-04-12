@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HostApp</title>
-    <link rel="stylesheet" type="text/css" href="<?php print HTTP; ?>css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php print HTTP; ?>vista/css/style.css">
     <style>
     /*
  Estilos globales
@@ -32,7 +32,7 @@
 Estilo para elemento html
 */
 
-    html {
+    /*html {
         background-image: linear-gradient(#f5fafaf8, #f7ebeb);
     }
 
@@ -67,7 +67,7 @@ Estilo para elemento html
 Estilo para elemento body
 */
 
-    body {
+    /*body {
         font-family: Verdana, Geneva, sans-serif;
         font-weight: bold;
         border-radius: 10px;
@@ -78,7 +78,7 @@ Estilo para elemento body
 Estilo para elemento header
 */
 
-    .principal {
+    /*.principal {
         display: flex;
         flex-direction: column;
         width: 50%;
@@ -172,7 +172,7 @@ Estilo para elemento header
 Estilo para elemento footer
 */
 
-    footer {
+   /* footer {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -315,7 +315,7 @@ Estilo para elemento footer
         height: 15%;
     }*/
 
-    .control_central {
+   /* .control_central {
         float: right;
         display: flex;
         flex-direction: column;
@@ -346,7 +346,7 @@ Estilo para elemento footer
     /**CARTA */
       /*FRestaurante*/
     
-    .wrap {
+    /*.wrap {
         max-width: 100%;
         margin: 0 auto;
     }
@@ -395,7 +395,7 @@ Estilo para elemento footer
     /*
 Estilo e imagen para elemento con class seccion1
 */
-.parallax {
+/*.parallax {
     background: #fff fixed no-repeat 50% 50%;
     background-size: cover;
 }

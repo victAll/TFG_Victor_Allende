@@ -5,7 +5,46 @@
    
     ?>
 
+<?php
+if (!empty($creador)) { ?>
+<?php
+    foreach ($creador as $key => $value) :
+        foreach ($value as $v) : 
+        $id_menu = $v['id'];
+        endforeach;
+    endforeach;
+    $nom = $_SESSION['nombre'];
+    $ape = $_SESSION['apellido']; 
+    $dni = $_SESSION['dni'];
+}?>
+<header>
+    <nav class="menuNav">
+        <div class="icon">
+            <a class="navbar-logo" href="#">
+                <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+            </a>
+        </div>
+        <div class="opcionMenuDiv">
+            <a id="submit_a" class="btn"
+                href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>&redireccion=menu"
+                class="btn">Inicio</a>
+            <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=menu" class="btn">Crear Menu</a>
+            <a id="submit_a"
+                href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $id_menu; ?>"
+                class="btn">Mostrar Reservar</a>
+            <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
+            <div>
+                <?php echo $nom. " ";
+                echo $ape . " ";
+                echo $dni;  ?>
+            </div>
 
+        </div>
+
+    </nav>
+    </nav>
+
+</header>
 
 <div class="contenedorReservas">
     <div class="muestraReservas">
@@ -15,8 +54,8 @@
 
         <h2><?php echo @$_SESSION['nombre']; ?> <?php echo @$_SESSION['apellido']; ?></h2>
         <br>
-        <a  href="index.php?opcion=nueva_transaccion&redireccion=menu" class="btn">Crear Menú</a>
-        <td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $_SESSION['dni']; ?>&redireccion=menu" class="btn">Volver</a>
+        <!--<a  href="index.php?opcion=nueva_transaccion&redireccion=menu" class="btn">Crear Menú</a>-->
+        <!--<td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $_SESSION['dni']; ?>&redireccion=menu" class="btn">Volver</a>-->
         </td>
         <br>
         <?php
@@ -48,16 +87,19 @@
                     <?php if(isset($user['nombre'])){?>
                     <td><?php echo $user['nombre'];?> </td>
                     <?php }
+                    
                      endforeach; 
                 } ?>
-                    <td><a class="btn" href="index.php/?opcion=editar_menu&id=<?php echo $valor['id']; ?>"
-                            class="btn">Editar</a></td>
                     <td><a class="btn"
-                            href="index.php/?opcion=eliminar&id=<?php echo $valor['id']; ?>&tabla=menu&redireccion=menu&id_admin=<?php echo $valor['id_admin']; ?>"
-                            class="btn">Eliminar</a></td>
+                            href="index.php/?opcion=editar_menu&id=<?php echo $valor['id']; ?>&id_admin=<?php echo $valor['id_admin']; ?>">Editar</a>
+                    </td>
+                    <td><a class="btn"
+                            href="index.php/?opcion=eliminar&id=<?php echo $valor['id']; ?>&tabla=menu&redireccion=menu&id_admin=<?php echo $valor['id_admin']; ?>">Eliminar</a>
+                    </td>
                     <!--<td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $valor['dni_usuario']; ?>" class="btn">Volver</a></td>-->
 
                 </tr>
+
 
 
                 <?php endforeach;

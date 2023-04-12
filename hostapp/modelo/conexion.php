@@ -8,7 +8,7 @@ function conectar_param_pdo($database){
     $servername="localhost";
     $username="victorDB";
     $password="victorDB";
-    $database='restaurante';
+    $database='hostapp';
    try {//PDO va con try catch
        $conn = new PDO("mysql:host=$servername; dbname=$database", $username, $password);
 

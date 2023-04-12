@@ -204,7 +204,37 @@ Estilo para elemento footer
     
     table {
         width: 100%;
-        border: 1px solid #000;
+        border: 1px solid rgb(26, 0, 0);
+    }
+    /*https://www.aprenderaprogramar.com/*/
+    
+    thead tr td {
+        background-color: rgb(135, 123, 240);
+    }
+    
+    table thead tr:nth-child(odd) {
+        background-color: grey;
+    }
+    
+    table tbody tr td:nth-child(odd) {
+        background-color: rgb(89, 126, 228);
+    }
+    
+    table tbody tr td:nth-child(even) {
+        background-color: rgb(110, 193, 226);
+    }
+    
+    .navbar-logo {
+        display: inline-block;
+        vertical-align: middle;
+        align-items: left;
+        width: 70px;
+    }
+    
+    .navbar-logo img {
+        float: left;
+        width: 100%;
+        height: auto;
     }
     
     th,
@@ -321,25 +351,40 @@ Estilo para elemento footer
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: end;
+        justify-content: space-between;
         width: 100%;
         padding-left: 0;
         margin-bottom: 0;
         list-style: none;
     }
-    /**CARTA */
-    /*FRestaurante*/
+    
+    .icon {
+        width: 20%;
+    }
+    
+    .opcionMenuDiv {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
     
     .wrap {
         max-width: 100%;
         margin: 0 auto;
     }
-    
-    .column-2.carta {
+    /*.column-2.carta {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         column-gap: 1rem;
         row-gap: 1rem;
+    }*/
+    
+    .column-2.carta {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
     }
     
     .plato-carta {
@@ -352,6 +397,7 @@ Estilo para elemento footer
     
     .img-plato-carta {
         display: flex;
+        width: 100%;
         flex-basis: 25%;
         justify-content: center;
     }
@@ -367,13 +413,6 @@ Estilo para elemento footer
         border-top: none;
         flex-basis: 60%;
         padding: 0 1rem;
-    }
-    
-    .precio-plato-carta {
-        display: flex;
-        flex-basis: 15%;
-        justify-content: center;
-        font-weight: bold;
     }
     /*
 Estilo e imagen para elemento con class seccion1

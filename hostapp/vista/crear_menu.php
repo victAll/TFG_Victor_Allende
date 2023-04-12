@@ -4,9 +4,45 @@ if (session_status() !== 0) { //si es 1 es que no hay session
 
 }
 include("layouts/header.php");
-?>
 
 
+
+if (!empty($usuario[0])) { 
+    foreach ($usuario as $key => $value) :
+        foreach ($value as $v) : 
+            $id= $v['id'];
+        endforeach;
+    endforeach;
+    } ?>
+
+
+<header>
+    <nav class="menuNav">
+        <div class="icon">
+            <a class="navbar-logo" href="#">
+                <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+            </a>
+        </div>
+        <div class="opcionMenuDiv">
+            <a id="submit_a" class="btn"
+                href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>&redireccion=menu"
+                class="btn">Inicio</a>
+            <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=menu&id_admin=<?php echo $id; ?>"
+                class="btn">Ver Menu</a>
+            <a id="submit_a"
+                href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $id; ?>"
+                class="btn">Ver Reservar</a>
+            <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
+            <div>
+                <?php echo $_SESSION['nombre'] . " ";
+                echo $_SESSION['apellido'] . " ";
+                echo $_SESSION['dni'];  ?>
+            </div>
+
+        </div>
+    </nav>
+
+</header>
 <div class="wraper_reserva">
     <form class=" formLogin2" method="post">
 
@@ -27,8 +63,12 @@ include("layouts/header.php");
             <input class="fieldsForm" type="text" name="entrante_menu" /><br>
             <label class="fieldsForm" for="">Principal</label> <br>
             <input class="fieldsForm" type="text" name="principal_menu" /><br>
+            <label class="fieldsForm" for="">Precio €</label> <br>
+            <input class="fieldsForm" type="decimal" name="precio_menu" /><br>
             <label class="fieldsForm" for="">Creado por</label> <br>
-            <input class="fieldsForm" type="text" name="dni_res" value="Nombre <?php echo $v['nombre'];?>  <?php echo $v['apellido']; ?>  DNI: <?php echo $v['dni']; ?>" readonly /><br>
+            <input class="fieldsForm" type="text" name="dni_res"
+                value="Nombre <?php echo $v['nombre'];?>  <?php echo $v['apellido']; ?>  DNI: <?php echo $v['dni']; ?>"
+                readonly /><br>
             <?php
             endforeach;
         endforeach;
@@ -47,9 +87,7 @@ include("layouts/header.php");
     </form>
 
 </div>
-<div class="wraper_reserva">
-    <a class="btn" href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>&redireccion=menu" class="btn">Volver</a>
-</div>
+
 
 
 

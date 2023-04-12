@@ -4,16 +4,44 @@
    
    
 ?>
+<?php
+if (!empty($creador)) { ?>
+<?php
+    foreach ($creador as $key => $value) :
+        foreach ($value as $v) : 
+        $id_menu = $v['id'];
+        endforeach;
+    endforeach;
+    $nom = $_SESSION['nombre'];
+    $ape = $_SESSION['apellido']; 
+    $dni = $_SESSION['dni'];
+}?>
+<header>
+    <nav class="menuNav">
+        <div class="icon">
+            <a class="navbar-logo" href="#">
+                <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+            </a>
+        </div>
+        <div class="opcionMenuDiv">
+            <a id="submit_a" class="btn"
+                href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>&redireccion=menu"
+                class="btn">Inicio</a>
+            <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=menu" class="btn">Crear Menu</a>
+            <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=menu&id_admin=<?php echo $id_menu; ?>"
+                class="btn">Ver Menu</a>
+            <a id="submit_a"
+                href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $vid_menu; ?>"
+                class="btn">Ver Reservar</a>
+            <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
+            <div>
+                <?php echo $nom. " ";
+                echo $ape . " ";
+                echo $dni;  ?>
+            </div>
 
-<header>  
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=menu" class="navbar-brand">Crear Menu</a>
-    <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=menu&id_admin=<?php echo $v['id']; ?>" class="navbar-brand">Ver Menu</a>
-    <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $v['id']; ?>" class="navbar-brand">Mostrar Reservar</a>
-    <a id="submit_a" href="index.php?opcion=salir" class="navbar-brand">Cerrar sesión</a>
-  </div>
-</nav>
+        </div>
+    </nav>
 
 </header>
 <h1>Modificar Menú</h1>
@@ -33,6 +61,8 @@
         <label class="fieldsForm ">Plato principal:</label>
         <input class="fieldsForm" type="text" value="<?php echo $valor['plato_principal']; ?>"
             name="plato_principal"></input>
+        <label class="fieldsForm" for="">Precio €</label> <br>
+        <input class="fieldsForm" type="decimal" value="<?php echo $valor['precio']; ?>" name="precio_menu" /><br>
 
         <?php endforeach;
             }
@@ -42,7 +72,8 @@
     </form>
 </div>
 <div class="wraper_modificar">
-    <td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $_SESSION['dni']; ?>" class="btn">Volver</a></td>
+    <td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $_SESSION['dni']; ?>&redireccion=menu"
+            class="btn">Volver</a></td>
 </div>
 
 

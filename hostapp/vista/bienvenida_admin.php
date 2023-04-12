@@ -17,24 +17,34 @@ if (!empty($usuario)) { ?>
             $_SESSION['apellido'] = $v['apellido']; ?>
 <br>
 <header>
-    <nav class="menuNav">
 
-        <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=menu" class="btn">Crear Menu</a>
-        <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=menu&id_admin=<?php echo $v['id']; ?>"
-            class="btn">Ver Menu</a>
-        <a id="submit_a"
-            href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $v['id']; ?>"
-            class="btn">Mostrar Reservar</a>
-        <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
-        <div>
-            <?php echo $v['nombre'] . " ";
+    <nav class="menuNav">
+        <div class="icon">
+            <a class="navbar-logo" href="#">
+                <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+            </a>
+        </div>
+        <div class="opcionMenuDiv">
+            <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=menu" class="btn">Crear Menu</a>
+            <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=menu&id_admin=<?php echo $v['id']; ?>"
+                class="btn">Ver Menu</a>
+            <a id="submit_a"
+                href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $v['id']; ?>"
+                class="btn">Ver Reservar</a>
+            <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
+            <div>
+                <?php echo $v['nombre'] . " ";
                 echo $v['apellido'] . " ";
                 echo $_SESSION['dni'];  ?>
+            </div>
+
         </div>
-    </nav>
     </nav>
 
 </header>
+
+
+
 
 <?php
         endforeach;
@@ -44,7 +54,6 @@ if (!empty($usuario)) { ?>
 <section class="parallax" id="section1">
 
 
-<img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
     <section class="wrap">
         <?php
         foreach ($usuario as $key => $value) :
@@ -61,34 +70,42 @@ if (!empty($usuario)) { ?>
         <div>
             <h2>Nuestra carta</h2>
         </div>
-        <div class="wrap column-2 carta">
-            <div class="plato-carta">
-                <div class="img-plato-carta">
-                <img src="<?php print HTTP; ?>vista/res/egg-fried.svg">
+
+        <?php
+        foreach ($menu as $key => $value) :
+            foreach ($value as $menus) : 
+            
+            if(isset($menus['entrante'])){
+            ?>
+            <div class="wrap column-2 carta">
+                    <div class="plato-carta">
+                        <div class="img-plato-carta">
+                            <img src="<?php print HTTP; ?>vista/res/egg-fried.svg">
+                        </div>
+                        <div class="title-plato-carta">
+                            <p><?php echo $menus['nombre_menu'];?></p>
+                        </div>
+                        <div class="title-plato-carta">
+                            <h4>Entrante</h4>
+                            <p><?php echo $menus['entrante'];?></p>
+                        </div>
+                        <div class="title-plato-carta">
+                            <h4>Principal</h4>
+                            <p><?php echo $menus['plato_principal'];?></p>
+                        </div>
+                        <div class="title-plato-carta">
+                            <h4>Precio</h4>
+                            <p><?php echo $menus['precio'];?></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="title-plato-carta">
-                    <h4>Entrante</h4>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="title-plato-carta">
-                    <h4>Principal</h4>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-            </div>
-            <div class="plato-carta">
-                <div class="img-plato-carta">
-                <img src="<?php print HTTP; ?>vista/res/egg-fried.svg">
-                </div>
-                <div class="title-plato-carta">
-                    <h4>Entrante</h4>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="title-plato-carta">
-                    <h4>Principal</h4>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-            </div>
-        </div>
+                <br>
+        <?php
+            }
+            endforeach;
+        endforeach;
+
+        ?>
 
     </section>
 
