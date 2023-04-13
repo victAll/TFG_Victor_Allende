@@ -2,7 +2,8 @@
    
    require_once("modelo/session.php");
    include("layouts/header.php");
-   
+   require_once("controlador/utils.php");
+
     ?>
 
 <?php
@@ -67,6 +68,7 @@ if (!empty($creador)) { ?>
                     <td>Nombre</td>
                     <td>Entrante</td>
                     <td>Principal</td>
+                    <td>Precio €</td>
                     <td>Creador</td>
                     <td colspan="3">Acciones</td>
 
@@ -76,11 +78,12 @@ if (!empty($creador)) { ?>
                 <?php
             if (!empty($menus)) {
                 foreach ($menus as $key => $value) {
-                    foreach ($value as $valor) : ?>
+                    foreach ($value as $menu) : ?>
                 <tr>
-                    <td><?php echo $valor['nombre_menu']; ?></td>
-                    <td><?php echo $valor['entrante']; ?></td>
-                    <td><?php echo $valor['plato_principal']; ?></td>
+                    <td><?php echo $menu['nombre_menu']; ?></td>
+                    <td><?php echo $menu['entrante']; ?></td>
+                    <td><?php echo $menu['plato_principal']; ?></td>
+                    <td><?php echo format_decimal($menu['precio']); ?></td>
                     <?php foreach ($creador as $key => $value) {
                         foreach ($value as $user) : ?>
 
@@ -91,16 +94,14 @@ if (!empty($creador)) { ?>
                      endforeach; 
                 } ?>
                     <td><a class="btn"
-                            href="index.php/?opcion=editar_menu&id=<?php echo $valor['id']; ?>&id_admin=<?php echo $valor['id_admin']; ?>">Editar</a>
+                            href="index.php/?opcion=editar_menu&id=<?php echo $menu['id']; ?>&id_admin=<?php echo $menu['id_admin']; ?>">Editar</a>
                     </td>
                     <td><a class="btn"
-                            href="index.php/?opcion=eliminar&id=<?php echo $valor['id']; ?>&tabla=menu&redireccion=menu&id_admin=<?php echo $valor['id_admin']; ?>">Eliminar</a>
+                            href="index.php/?opcion=eliminar&id=<?php echo $menu['id']; ?>&tabla=menu&redireccion=menu&id_admin=<?php echo $menu['id_admin']; ?>">Eliminar</a>
                     </td>
-                    <!--<td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $valor['dni_usuario']; ?>" class="btn">Volver</a></td>-->
+                    <!--<td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $menu['dni_usuario']; ?>" class="btn">Volver</a></td>-->
 
                 </tr>
-
-
 
                 <?php endforeach;
                 }

@@ -143,8 +143,13 @@ class ModeloController{
             //$campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, menu ";
             $dni = $_SESSION['dni'];
             $condicion_reserva = " dni_usuario= '" . $dni. "'";
+            $condicion_usuario = " dni= '" . $dni. "'";
             $dato = $listar->mostrar("reservas ","*", $condicion_reserva );
+            $usuario = $listar->mostrar("usuarios ","*", $condicion_usuario );
+            //$id_usuario = $_GET['id_usuario'];
+           // $reservas = $listar->mostrar_reservas_usuario($id_usuario);
             require_once("vista/mostrar_reservas.php");
+
         }else if($redireccion == 'menu'){
             $id_admin = $_GET['id_admin'];
             $condicion_menu = " id_admin= '" . $id_admin. "'";
@@ -189,7 +194,8 @@ class ModeloController{
         //volvemos a mostrar reservas una vez hecha la reserva
         $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
         $dato = $reserva->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
-        //$menu = $reserva->mostrar("menu ", "*", " id_usuario = '" . $id_usuario . "'");
+        $usuario = $reserva->mostrar("usuarios ", "*", " id = '" . $id_usuario . "'");
+        $reservas = $reserva->mostrar_reservas_usuario($id_usuario);
         require_once("vista/mostrar_reservas.php");
     }
 
@@ -200,8 +206,10 @@ class ModeloController{
     function editar_reserva()
     {
         $id_reserva = $_GET['id'];
+        $dni = $_SESSION['dni'];
         $reserva = new Modelo();
         $reservaEditar = $reserva->mostrar(" reservas ","*", "id = " . $id_reserva);
+        $usuario = $reserva->mostrar("usuarios ", "* " , " dni = '" . $dni . "'");
         require_once("vista/actualizar_reserva.php");
     }
 
@@ -227,6 +235,8 @@ class ModeloController{
         //volvemos a mostrar reservas una vez hecha la reserva
         $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
         $dato = $update->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
+        $usuario = $update->mostrar("usuarios ", "* " , " dni = '" . $dni . "'");
+        
         require_once("vista/mostrar_reservas.php");
     }
     /**
@@ -247,6 +257,8 @@ class ModeloController{
                 $dni = $_SESSION['dni'];
                 $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
                 $dato = $delete->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
+                $usuario = $delete->mostrar(" usuarios ", " * ", "dni = '" . $dni . "'");
+
                 require_once("vista/mostrar_reservas.php");
             }else if ($redireccion == 'reserva_admin'){
                 $dni = $_SESSION['dni'];
@@ -321,7 +333,7 @@ class ModeloController{
         require_once("vista/mostrar_menu.php");
     }
 
-  
+
 
 
 

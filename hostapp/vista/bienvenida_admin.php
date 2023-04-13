@@ -4,6 +4,8 @@ if (session_status() !== 0) { //si es 1 es que no hay session
 
 }
 include("layouts/header.php");
+require_once("controlador/utils.php");
+
 ?>
 
 
@@ -70,6 +72,7 @@ if (!empty($usuario)) { ?>
         <div>
             <h2>Nuestra carta</h2>
         </div>
+        <br><br>
 
         <?php
         foreach ($menu as $key => $value) :
@@ -95,7 +98,7 @@ if (!empty($usuario)) { ?>
                         </div>
                         <div class="title-plato-carta">
                             <h4>Precio</h4>
-                            <p><?php echo $menus['precio'];?></p>
+                            <p><?php echo format_decimal($menus['precio']);?></p>
                         </div>
                     </div>
                 </div>
@@ -124,5 +127,6 @@ if (!empty($usuario)) { ?>
 } ?>
 
 <?php
+
 include("layouts/footer.php");
 ?>

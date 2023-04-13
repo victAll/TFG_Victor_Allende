@@ -1,7 +1,8 @@
 <?php
    include("layouts/header.php");
    require_once("modelo/session.php");
-   
+   require_once("controlador/utils.php");
+
    
 ?>
 <?php
@@ -62,7 +63,7 @@ if (!empty($creador)) { ?>
         <input class="fieldsForm" type="text" value="<?php echo $valor['plato_principal']; ?>"
             name="plato_principal"></input>
         <label class="fieldsForm" for="">Precio €</label> <br>
-        <input class="fieldsForm" type="decimal" value="<?php echo $valor['precio']; ?>" name="precio_menu" /><br>
+        <input class="fieldsForm" type="decimal" value="<?php echo format_decimal($valor['precio']); ?>" name="precio_menu" /><br>
 
         <?php endforeach;
             }
@@ -71,10 +72,10 @@ if (!empty($creador)) { ?>
         <input id="submit" type="hidden" name="opcion" value="actualizar_menu">
     </form>
 </div>
-<div class="wraper_modificar">
+<!--<div class="wraper_modificar">
     <td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $_SESSION['dni']; ?>&redireccion=menu"
             class="btn">Volver</a></td>
-</div>
+</div>-->
 
 
 <?php

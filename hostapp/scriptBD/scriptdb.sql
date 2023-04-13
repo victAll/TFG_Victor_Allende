@@ -43,9 +43,8 @@ CREATE TABLE reservas(
 );
 
 
-
-
-insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Victor','Allende','0000','admin@gmail.es', 'admin', 'a');
+insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Victor','Allende','0000', 'victor@gmail.es','victor', 'a');
+insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Mateo','Allende','9999', 'mateo@gmail.es','mateo', 'a');
 
 
 insert into usuarios  (nombre, apellido, dni, email, password)  values('Victor','Allende','1111', 'victor@gmail.es','victor');
@@ -64,3 +63,12 @@ INNER JOIN usuarios us
 ON res.id_usuario = us.id
 INNER JOIN menu m 
 ON m.id = res.id_menu;
+
+
+select m.nombre_menu as nombre_menu, m.entrante as entrante_menu, m.plato_principal as principal_menu, m.precio as precio_menu,
+ res.id as id_reserva, res.nombre as nombre_reserva, res.fecha_reserva , res.email_usuario, res.id_usuario as id_usuario_res
+ from menu m
+INNER JOIN reservas res
+ON m.id = res.id_menu
+INNER JOIN usuarios user
+ON res.id_usuario = user.id;

@@ -27,6 +27,7 @@ class Modelo{
 
      public function mostrar($tabla, $campos, $condicion){
         $consul="select " .$campos. " from ".$tabla." where ".$condicion.";";
+        //echo $consul;
             $resu=$this->db->query($consul);
             while($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
                 $this->datos[]=$filas;
@@ -85,6 +86,23 @@ class Modelo{
              $this->datos[]=$filas;
          }
          return $this->datos;
+     }
+
+     public function mostrar_reservas_usuario($id){
+        $consul = "SELECT m.nombre_menu as nombre_menu, m.entrante as entrante_menu, m.plato_principal as principal_menu, m.precio as precio_menu,
+        res.id as id_reserva, res.nombre as nombre_reserva, res.fecha_reserva , res.email_usuario, res.id_usuario as id_usuario_res
+        FROM menu m
+        INNER JOIN reservas res
+        ON m.id = res.id_menu
+        INNER JOIN usuarios user
+        ON res.id_usuario = ".$id;
+       //echo $consul;
+        $resu=$this->db->query($consul);
+        while($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
+            $this->datos[]=$filas;
+        }
+        return $this->datos;
+
      }
 }
 
