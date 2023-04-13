@@ -44,12 +44,12 @@ CREATE TABLE reservas(
 
 
 insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Victor','Allende','0000', 'victor@gmail.es','victor', 'a');
-insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Mateo','Allende','9999', 'mateo@gmail.es','mateo', 'a');
+insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Mateo','Allende','1111', 'mateo@gmail.es','mateo', 'a');
 
 
-insert into usuarios  (nombre, apellido, dni, email, password)  values('Victor','Allende','1111', 'victor@gmail.es','victor');
-insert into usuarios  (nombre, apellido, dni, email, password)  values('Pepe','Perez','2222', 'pepe@gmail.es','pepe');
-insert into usuarios  (nombre, apellido, dni, email, password)  values('Jose','Redriguez','3333', 'jose@gmail.es','jose');
+insert into usuarios  (nombre, apellido, dni, email, password)  values('Victor','Allende','2222', 'victor@gmail.es','victor');
+insert into usuarios  (nombre, apellido, dni, email, password)  values('Pepe','Perez','3333', 'pepe@gmail.es','pepe');
+insert into usuarios  (nombre, apellido, dni, email, password)  values('Jose','Redriguez','4444', 'jose@gmail.es','jose');
 
 insert into menu  (id_admin,nombre_menu,entrante,plato_principal,precio)  values(1,'El carnívoro','Surtido Ibéricos', 'Chuletón de Buey 1/2 kg.',45.00);
 
