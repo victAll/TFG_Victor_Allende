@@ -1,9 +1,8 @@
-/*cd C:\xampp\mysql\bin\
- mysql -h localhost -u root -p 
+-- cd C:\xampp\mysql\bin\
+-- mysql -h localhost -u root -p 
  
- 
- show tables;
- describe administrador;*/
+ -- show tables;
+ -- describe tabla;
 
 CREATE DATABASE hostapp;
 
@@ -42,16 +41,16 @@ CREATE TABLE reservas(
 	foreign key (id_menu) references menu(id) on delete cascade on update cascade
 );
 
-
+-- Usuarios Admin
 insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Victor','Allende','0000', 'victor@gmail.es','victor', 'a');
 insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Mateo','Allende','1111', 'mateo@gmail.es','mateo', 'a');
-
-
+-- Usuarios nommales
 insert into usuarios  (nombre, apellido, dni, email, password)  values('Victor','Allende','2222', 'victor@gmail.es','victor');
 insert into usuarios  (nombre, apellido, dni, email, password)  values('Pepe','Perez','3333', 'pepe@gmail.es','pepe');
 insert into usuarios  (nombre, apellido, dni, email, password)  values('Jose','Redriguez','4444', 'jose@gmail.es','jose');
-
+-- Menu
 insert into menu  (id_admin,nombre_menu,entrante,plato_principal,precio)  values(1,'El carnívoro','Surtido Ibéricos', 'Chuletón de Buey 1/2 kg.',45.00);
+insert into menu  (id_admin,nombre_menu,entrante,plato_principal,precio)  values(2,'El Vegetariano','Ensalada Capresse', 'Berenjenas con bechamel',13.50);
 
 
 

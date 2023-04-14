@@ -63,12 +63,11 @@ include("layouts/header.php");
 
                 ?>
                 <label class="fieldsForm" for="">Seleccione menú:</label> <br>
-                <select id="sel_menu" name="sel_menu">
-                    <!--<option  value="0"></option>-->
+                <select class="select" id="sel_menu" name="sel_menu" required>
                     <?php
                     foreach ($menu as $key => $value) :
                         foreach ($value as $v) :
-                            echo '<option value="' . $v['id'] . '">' . $v['entrante'] . $v['plato_principal'] . '</option>';
+                            echo '<option value="' . $v['id'] . '">' . $v['entrante'] ."         ". $v['plato_principal'] . '</option>';
                     ?>
                     <?php
                         endforeach;
@@ -85,12 +84,12 @@ include("layouts/header.php");
         } ?>
         <!-- Campos libres de edición sin información desde base de datos a introducir por el ususario que hce la reserva-->
         <label class="fieldsForm" for="">Fecha</label><br>
-        <input class="fieldsForm" type="date" name="fecha_reserva_res" /><br>
+        <input class="selectFecha" type="date" name="fecha_reserva_res" required/><br>
 
 
-        <input id="submit" type="submit" name="btn" value="Reservar">
+        <input class="btn" type="submit" name="btn" value="Reservar">
         <input id="submit" type="hidden" name="opcion" value="insertar_reserva">
-        <input id="submit" type="reset" name="btn" value="Borrar" />
+        <input class="btn"  type="reset" name="btn" value="Borrar" />
 
     </form>
 

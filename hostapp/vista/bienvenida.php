@@ -12,6 +12,7 @@ require_once("controlador/utils.php");
             $id = $v['id'];
             $nombre = $v['nombre'];
             $apellido = $v['apellido'];
+            $dni = $v['dni'];
         endforeach;
     endforeach;
 
@@ -29,12 +30,12 @@ if (!empty($usuario)) { ?>
             </div>
             <div class="opcionMenuDiv">
                 <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=reserva" class="btn">Reservar</a>
-                <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=reserva&id_usuario=<?php echo $id ?>" class="btn">Mostrar Reservar</a>
+                <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=reserva&id_usuario=<?php echo $id ?>" class="btn">Mis Reservas</a>
                 <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
                 <div>
                     <?php echo $nombre . " ";
                     echo $apellido . " ";
-                    echo $_SESSION['dni'];  ?>
+                    echo $dni;  ?>
                 </div>
 
             </div>

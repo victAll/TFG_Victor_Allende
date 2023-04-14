@@ -79,9 +79,9 @@ if (!empty($usuario[0])) {
 
         } ?>
 
-        <input id="submit" type="submit" name="btn" value="Crear">
+        <input id="submit" class="btn" type="submit" name="btn" value="Crear">
         <input id="submit" type="hidden" name="opcion" value="insertar_menu">
-        <input id="submit" type="reset" name="btn" value="Borrar" />
+        <input id="submit" class="btn" type="reset" name="btn" value="Borrar" />
 
 
     </form>

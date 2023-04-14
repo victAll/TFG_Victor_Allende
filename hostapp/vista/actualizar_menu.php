@@ -10,7 +10,7 @@ if (!empty($creador)) { ?>
 <?php
     foreach ($creador as $key => $value) :
         foreach ($value as $v) : 
-        $id_menu = $v['id'];
+        $id_admin = $v['id'];
         endforeach;
     endforeach;
     $nom = $_SESSION['nombre'];
@@ -29,10 +29,10 @@ if (!empty($creador)) { ?>
                 href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>&redireccion=menu"
                 class="btn">Inicio</a>
             <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=menu" class="btn">Crear Menu</a>
-            <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=menu&id_admin=<?php echo $id_menu; ?>"
+            <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=menu&id_admin=<?php echo $id_admin; ?>"
                 class="btn">Ver Menu</a>
             <a id="submit_a"
-                href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $vid_menu; ?>"
+                href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $id_admin; ?>"
                 class="btn">Ver Reservar</a>
             <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
             <div>
@@ -47,7 +47,7 @@ if (!empty($creador)) { ?>
 </header>
 <h1>Modificar Menú</h1>
 
-<div class="wraper_modificar">
+<div class="wraper_reserva">
     <form class="formLoginModificar" action="" method="get">
         <?php
         if (!empty($menuEditar)) {
@@ -68,7 +68,7 @@ if (!empty($creador)) { ?>
         <?php endforeach;
             }
         } ?>
-        <input id="submit" type="submit" name="btn" value="Modificar">
+        <input id="submit" class="btn" type="submit" name="btn" value="Modificar">
         <input id="submit" type="hidden" name="opcion" value="actualizar_menu">
     </form>
 </div>

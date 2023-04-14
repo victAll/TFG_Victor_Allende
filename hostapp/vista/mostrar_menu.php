@@ -47,6 +47,12 @@ if (!empty($creador)) { ?>
 
 </header>
 
+
+<section class="parallax" id="section1">
+
+
+<section class="wrap">
+
 <div class="contenedorReservas">
     <div class="muestraReservas">
         <?php 
@@ -120,6 +126,10 @@ if (!empty($creador)) { ?>
     </div>
 
 </div>
+</section>
+</section>
+
+
 
 
 

@@ -22,7 +22,7 @@ Estilo para elemento html
 */
     
     html {
-        background-image: linear-gradient(#f5fafaf8, #f7ebeb);
+        background-image: linear-gradient( rgb(252, 250, 250), rgb(218, 215, 215));
     }
     
     .tabla {
@@ -31,7 +31,7 @@ Estilo para elemento html
     }
     
     .btn {
-        background-color: rgb(75, 129, 245);
+        background-color: rgb(129, 165, 245);
         color: black;
         padding: 10px 20px;
         display: inline-block;
@@ -58,9 +58,11 @@ Estilo para elemento body
     body {
         font-family: Verdana, Geneva, sans-serif;
         font-weight: bold;
-        border-radius: 10px;
+        border-radius: 8px;
         color: rgb(46, 42, 42);
     }
+    
+    *
     /*
 Estilo para elemento header
 */
@@ -94,9 +96,11 @@ Estilo para elemento header
     .wraper_reserva {
         display: flex;
         justify-content: center;
-        width: 100%;
-        height: 100%;
         padding: 10px;
+        margin: 1% 25% 1% 25%;
+    }
+    
+    .wraper_reserva input {
         margin: 1%;
     }
     
@@ -127,8 +131,11 @@ Estilo para elemento header
         flex-direction: column;
         align-items: center;
         padding: 10px;
+        margin: 1% 10% 1% 10%;
+    }
+    
+    .wraper_form input {
         margin: 1%;
-        width: 100%;
     }
     
     section {
@@ -170,16 +177,6 @@ Estilo para elemento footer
         margin: 1%;
     }
     
-    #submit {
-        font-weight: bold;
-        cursor: pointer;
-        padding: 5px;
-        margin: 0 10px 20px 0;
-        border: 1px solid #ccc;
-        background: #eee;
-        border-radius: 8px 8px 8px 8px;
-    }
-    
     #submit_a {
         font-weight: bold;
         cursor: pointer;
@@ -209,7 +206,7 @@ Estilo para elemento footer
     /*https://www.aprenderaprogramar.com/*/
     
     thead tr td {
-        background-color: rgb(135, 123, 240);
+        background-color: rgb(158, 149, 245);
     }
     
     table thead tr:nth-child(odd) {
@@ -235,17 +232,6 @@ Estilo para elemento footer
         float: left;
         width: 100%;
         height: auto;
-    }
-    
-    th,
-    td {
-        width: 25%;
-        text-align: left;
-        vertical-align: top;
-        border: 1px solid #000;
-        border-spacing: 0;
-        background-color: rgb(19, 193, 38);
-        ;
     }
     
     h1,
@@ -325,10 +311,6 @@ Estilo para elemento footer
         width: 100%;
         height: 100%;
     }
-    /*header {
-    flex-direction: column;
-    height: 15%;
-}*/
     
     .control_central {
         float: right;
@@ -373,6 +355,7 @@ Estilo para elemento footer
     .wrap {
         max-width: 100%;
         margin: 0 auto;
+        background-image: linear-gradient(#a6eeeef8, #81aaf5);
     }
     /*.column-2.carta {
         display: grid;
@@ -425,6 +408,32 @@ Estilo e imagen para elemento con class seccion1
     
     #section1 {
         background-image: url('./vista/res/img_1.jpg');
+    }
+    /**Custom select https://www.antofernandez.com/personalizar-un-select-con-css/ */
+    /* Eliminamos la fecha que por defecto aparece en el desplegable */
+    
+    .select {
+        display: inline-block;
+        width: 100%;
+        cursor: pointer;
+        padding: 7px 10px;
+        height: 30px;
+        background: #f0f0f0;
+        color: #302b2b;
+        font-family: 'Quicksand', sans-serif;
+        border-radius: 8px;
+    }
+    
+    .selectFecha {
+        display: inline-block;
+        width: 93%;
+        cursor: pointer;
+        padding: 7px 10px;
+        height: 30px;
+        background: #f0f0f0;
+        color: #302b2b;
+        font-family: 'Quicksand', sans-serif;
+        border-radius: 8px;
     }
     
     @media (max-width:680px) {

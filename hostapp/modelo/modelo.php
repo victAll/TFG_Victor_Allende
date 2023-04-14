@@ -26,13 +26,25 @@ class Modelo{
 
 
      public function mostrar($tabla, $campos, $condicion){
-        $consul="select " .$campos. " from ".$tabla." where ".$condicion.";";
-        //echo $consul;
-            $resu=$this->db->query($consul);
-            while($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
-                $this->datos[]=$filas;
-            }
-            return $this->datos;
+
+        try {//
+            $consul="select " .$campos. " from ".$tabla." where ".$condicion.";";
+            //echo $consul;
+                $resu=$this->db->query($consul);
+                while($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
+                    $this->datos[]=$filas;
+                }
+                return $this->datos;
+     
+        } catch (PDOException $err) {
+           return "Error al consultar con base de datos: ".$err;
+           echo $err;
+        }
+
+
+
+
+
     }
 
     /**

@@ -9,6 +9,18 @@ include("layouts/header.php");
 
 <?php } ?>
 
+<header>
+
+<nav class="menuNav">
+    <div class="icon">
+        <a class="navbar-logo" href="#">
+            <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+        </a>
+    </div>
+</nav>
+
+</header>
+
 <div class="wraper_form">
     <form class=" formLogin mb-3" action="" method="post">
         <h2>Inicia sesión:</h2>
@@ -16,7 +28,11 @@ include("layouts/header.php");
         <input class="fieldsForm " type="text" name="dni" required />
         <label class="fieldsForm ">*Contraseña:</label>
         <input class="fieldsForm " type="password" name="password" required />
-        <input class="btn btn-primary" type="submit" name="btn" value="Entrar">
+        <!--<div>
+        <input class="fieldsForm " id="aceptar"type="checkbox" name="aceptarPoliticas" required />
+        <label for="aceptar" class="fieldsForm "> Acepta nuestra politica de privacidad</label>
+        </div>-->
+        <input class="btn" type="submit" name="btn" value="Entrar">
         <input type="hidden" name="opcion" value="validar_login">
         <?php
         if (isset($_POST["login"])) {
@@ -33,7 +49,7 @@ include("layouts/header.php");
     <form action="" class=" formLogin" method="get">
         
     <label class="fieldsForm ">Si no tienes cuenta registrate:</label>
-        <input class="btn btn-primary" type="submit" name="btn" value="Registrate">
+        <input class="btn" type="submit" name="btn" value="Registrate">
         <input type="hidden" name="opcion" value="registro">
     </form>
 

@@ -12,9 +12,15 @@ class ModeloController{
 
     // mostrar inicio
     static function index(){
-        $modelo = new Modelo();
-        $datos = $modelo->mostrar("usuarios","*", "1");
-        require_once("vista/login.php");
+        try {
+            $modelo = new Modelo();
+            $datos = $modelo->mostrar("usuarios","*", "1");
+            require_once("vista/login.php");
+        } catch (PDOException $err) {
+           return "Error al conectar con base de datos: ".$err;
+           echo $err;
+        }
+
     }
 
     /**
@@ -106,6 +112,7 @@ class ModeloController{
             
             $registrar->insertar(" usuarios ",$campos, $data );
             $usuario = $registrar->mostrar("usuarios","*","dni=".$dni);
+            $menu = $registrar->mostrar("menu","*", 1);
 
             require_once("vista/bienvenida.php");
         }
@@ -135,6 +142,7 @@ class ModeloController{
      */
     static function mostrar_listas(){
         
+        $id_admin = $_GET['id_admin'];
         $redireccion = $_GET['redireccion'];
         $listar = new Modelo();
         $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, menu ";
@@ -151,17 +159,14 @@ class ModeloController{
             require_once("vista/mostrar_reservas.php");
 
         }else if($redireccion == 'menu'){
-            $id_admin = $_GET['id_admin'];
             $condicion_menu = " id_admin= '" . $id_admin. "'";
             $menus = $listar->mostrar(" menu ", " * ", $condicion_menu);
             $creador = $listar->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
             require_once("vista/mostrar_menu.php");
         }else{{
-                $id_admin = $_GET['id_admin'];
-                //$menus = $listar->mostrar(" menu ", " * ", $condicion_menu);
-                $menus = $listar->mostrar_reservas_admin();
-                $creador = $listar->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
-                require_once("vista/mostrar_reservas_admin.php");
+            $menus = $listar->mostrar_reservas_admin();
+            $creador = $listar->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
+            require_once("vista/mostrar_reservas_admin.php");
             }
         }
 
@@ -333,18 +338,24 @@ class ModeloController{
         require_once("vista/mostrar_menu.php");
     }
 
+    /**
+     * envia a la pagina de logout con el ususario que quiere cerrar sesión
+     */
+    static function salir(){
+        $dni = $_SESSION['dni'];
+        $volver = new Modelo();
+        $usuario = $volver->mostrar("usuarios","*","dni=".$dni);
 
+        require_once("vista/logout.php");
+    }
 
-
-
-
-
-
-
-
-
-
+        /**
+     * Envia a vsta de despedida 
+     */
+    static function cerrar(){   
+        
+        require_once("vista/despedida.php");
+    }
 }
-
 
 ?>
