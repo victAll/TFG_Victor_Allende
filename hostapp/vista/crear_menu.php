@@ -20,7 +20,7 @@ if (!empty($usuario[0])) {
     <nav class="menuNav">
         <div class="icon">
             <a class="navbar-logo" href="#">
-                <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+                <img src="<?php print HTTP; ?>vista/res/HostApp.png">
             </a>
         </div>
         <div class="opcionMenuDiv">
@@ -32,12 +32,21 @@ if (!empty($usuario[0])) {
             <a id="submit_a"
                 href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $id; ?>"
                 class="btn">Ver Reservar</a>
-            <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
-            <div>
-                <?php echo $_SESSION['nombre'] . " ";
-                echo $_SESSION['apellido'] . " ";
-                echo $_SESSION['dni'];  ?>
-            </div>
+                <ul id="submit_a" class="main-links btn">
+                <li class="dropdown-li">
+                    Opciones
+                    <ul class="dropdown">
+                        <li><br></li>
+                        <li><?php echo $v['nombre'] . " ";?></li>
+                        <li><br></li>
+                        <li><?php echo $v['apellido'] . " ";?></li>
+                        <li><br></li>
+                        <!--<li><?php echo $v['dni'] . " ";?></li>
+                        <li><br></li>-->
+                        <li><a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
 
         </div>
     </nav>

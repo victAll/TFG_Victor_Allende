@@ -2,7 +2,8 @@
 require_once("modelo/modelo.php");
 require_once("modelo/session.php");
 
-class ModeloController{
+class ModeloController
+{
     private $model;
 
     function __construct()
@@ -11,16 +12,16 @@ class ModeloController{
     }
 
     // mostrar inicio
-    static function index(){
+    static function index()
+    {
         try {
             $modelo = new Modelo();
-            $datos = $modelo->mostrar("usuarios","*", "1");
+            $datos = $modelo->mostrar("usuarios", "*", "1");
             require_once("vista/login.php");
         } catch (PDOException $err) {
-           return "Error al conectar con base de datos: ".$err;
-           echo $err;
+            return "Error al conectar con base de datos: " . $err;
+            echo $err;
         }
-
     }
 
     /**
@@ -30,24 +31,24 @@ class ModeloController{
     {
         $dni = $_SESSION['dni'];
         $redireccion = $_GET['redireccion'];
-        $data = " dni= '" . $dni. "'";
+        $data = " dni= '" . $dni . "'";
         $volver = new Modelo();
-        $usuario = $volver->mostrar('usuarios',"*", $data);
+        $usuario = $volver->mostrar('usuarios', "*", $data);
         $menu = $volver->mostrar(" menu ", " * ", 1);
 
-        if($redireccion == 'reserva'){
+        if ($redireccion == 'reserva') {
             require_once("vista/bienvenida.php");
-        }else{
+        } else {
             require_once("vista/bienvenida_admin.php");
         }
-        
     }
 
     /**
      *valida el login corercto del usuario
      *devuelve mensaje en caso de no encontrarse el ususario registrado 
      */
-    static function validar_login(){
+    static function validar_login()
+    {
         $validar_modelo = new Modelo();
         //recuperamos las variables
         $dni = $_REQUEST['dni'];
@@ -55,17 +56,17 @@ class ModeloController{
         $data = "dni= '" . $dni . "' and password ='" . $password . "'";
 
 
-        $usuario = $validar_modelo->mostrar("usuarios","*", $data);
-        $menu = $validar_modelo->mostrar("menu","*", 1);
+        $usuario = $validar_modelo->mostrar("usuarios", "*", $data);
+        $menu = $validar_modelo->mostrar("menu", "*", 1);
 
         if (empty($usuario)) {
             //devolvemos mensje a la vuista en caso de no estar el ususio que se intenta logear
             $resVacia = "El Dni o la contraseña no son correctos, registrese o intentelo nuevamente...";
-            header("location:".urlsite);
+            header("location:" . urlsite);
         } else {
             foreach ($usuario as $key => $value) :
                 foreach ($value as $v) :
-                    if($v['tipo_usuario']  == 'n'){
+                    if ($v['tipo_usuario']  == 'n') {
                         require_once("vista/bienvenida.php");
                     } else {
                         require_once("vista/bienvenida_admin.php");
@@ -75,11 +76,13 @@ class ModeloController{
         }
     }
 
-    function registro(){
+    function registro()
+    {
         require_once("vista/registro.php");
     }
 
-    function volverLogin(){
+    function volverLogin()
+    {
         require_once("vista/login.php");
     }
 
@@ -87,7 +90,8 @@ class ModeloController{
     /**
      * Registramos un nuevo cliente
      */
-    function alta_cliente(){
+    function alta_cliente()
+    {
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
         $dni = $_POST['dni'];
@@ -101,82 +105,82 @@ class ModeloController{
         $registrar = new Modelo();
 
         //validar si el usuario existe antes de registrar
-        $usuario = $registrar->mostrar("usuarios","*","dni=".$dni);
+        $usuario = $registrar->mostrar("usuarios", "*", "dni=" . $dni);
         if ($usuario != null) {
 
             $resExiste = "El usuario con dni: " . $dni . " ya está registrado, inténtalo nuevamente...";
             //header("location:".urlsite);
-            
+
             require_once("vista/registro.php");
         } else {
-            
-            $registrar->insertar(" usuarios ",$campos, $data );
-            $usuario = $registrar->mostrar("usuarios","*","dni=".$dni);
-            $menu = $registrar->mostrar("menu","*", 1);
+
+            $registrar->insertar(" usuarios ", $campos, $data);
+            $usuario = $registrar->mostrar("usuarios", "*", "dni=" . $dni);
+            $menu = $registrar->mostrar("menu", "*", 1);
 
             require_once("vista/bienvenida.php");
         }
-
     }
 
     /**
      * Reservar muestra html de formulario para crear reservas o menu
      */
-    function nueva_transaccion(){
+    function nueva_transaccion()
+    {
         $redireccion = $_GET['redireccion'];
         $dni = $_SESSION['dni'];
-        $data = " dni= '" . $dni. "'";
+        $data = " dni= '" . $dni . "'";
 
         $reservar = new Modelo();
         $usuario = $reservar->mostrar('usuarios', "*", $data);
         $menu = $reservar->mostrar('menu', "*", 1);
-        if($redireccion == 'reserva'){
+        if ($redireccion == 'reserva') {
             require_once("vista/crear_reserva.php");
-        }else{
+        } else {
             require_once("vista/crear_menu.php");
         }
     }
 
-        /**
+    /**
      * Recupera el listado de reservas y las envia a la vista por usuario logeado
      */
     static function mostrar_listas(){
-        
-        $id_admin = $_GET['id_admin'];
+
         $redireccion = $_GET['redireccion'];
         $listar = new Modelo();
         $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, menu ";
 
-        if($redireccion == 'reserva'){
-            //$campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, menu ";
+        if ($redireccion == 'reserva') {
             $dni = $_SESSION['dni'];
-            $condicion_reserva = " dni_usuario= '" . $dni. "'";
-            $condicion_usuario = " dni= '" . $dni. "'";
-            $dato = $listar->mostrar("reservas ","*", $condicion_reserva );
-            $usuario = $listar->mostrar("usuarios ","*", $condicion_usuario );
-            //$id_usuario = $_GET['id_usuario'];
-           // $reservas = $listar->mostrar_reservas_usuario($id_usuario);
+            $id = $_GET['id'];
+            $condicion_reserva = " dni_usuario= '" . $dni . "'";
+            $condicion_usuario = " dni= '" . $dni . "'";
+            //$dato = $listar->mostrar("reservas ", "*", $condicion_reserva);
+            $dato = $listar->mostrar_reservas_usuario($id);
+            $usuario = $listar->mostrar("usuarios ", "*", $condicion_usuario);
             require_once("vista/mostrar_reservas.php");
-
-        }else if($redireccion == 'menu'){
-            $condicion_menu = " id_admin= '" . $id_admin. "'";
+        } else if ($redireccion == 'menu') {
+            $id_admin = $_GET['id_admin'];
+            $condicion_menu = " id_admin= '" . $id_admin . "'";
             $menus = $listar->mostrar(" menu ", " * ", $condicion_menu);
             $creador = $listar->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
             require_once("vista/mostrar_menu.php");
-        }else{{
-            $menus = $listar->mostrar_reservas_admin();
-            $creador = $listar->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
-            require_once("vista/mostrar_reservas_admin.php");
+        } else { {
+                $id_admin = $_GET['id_admin'];
+                //$menus = $listar->mostrar(" menu ", " * ", $condicion_menu);
+                $menus = $listar->mostrar_reservas_admin();
+                $creador = $listar->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
+                require_once("vista/mostrar_reservas_admin.php");
             }
         }
-
     }
 
 
-        /**
+    /**
      * Formulario de registro de una nueva reserva
      */
-    function insertar_reserva(){
+    function insertar_reserva()
+    {
         $id_usuario = $_POST['id_res'];
         $nombre = $_POST['nombre_res'] . " " . $_POST['apellido_res'];
         $dni_usuario = $_POST['dni_res'];
@@ -198,9 +202,10 @@ class ModeloController{
 
         //volvemos a mostrar reservas una vez hecha la reserva
         $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
-        $dato = $reserva->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
+        //$dato = $reserva->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
+        $dato = $reserva->mostrar_reservas_usuario($id_usuario);
+
         $usuario = $reserva->mostrar("usuarios ", "*", " id = '" . $id_usuario . "'");
-        $reservas = $reserva->mostrar_reservas_usuario($id_usuario);
         require_once("vista/mostrar_reservas.php");
     }
 
@@ -213,8 +218,8 @@ class ModeloController{
         $id_reserva = $_GET['id'];
         $dni = $_SESSION['dni'];
         $reserva = new Modelo();
-        $reservaEditar = $reserva->mostrar(" reservas ","*", "id = " . $id_reserva);
-        $usuario = $reserva->mostrar("usuarios ", "* " , " dni = '" . $dni . "'");
+        $reservaEditar = $reserva->mostrar(" reservas ", "*", "id = " . $id_reserva);
+        $usuario = $reserva->mostrar("usuarios ", "* ", " dni = '" . $dni . "'");
         require_once("vista/actualizar_reserva.php");
     }
 
@@ -228,6 +233,7 @@ class ModeloController{
         $email_usuario = $_GET['email_usuario'];
         $dni = $_GET['dni_usuario'];
         $id = $_GET['id'];
+        $id_usuario = $_GET['id_usuario'];
         $data = " nombre , fecha_reserva , email_usuario values ('" . $nombre . "','" . $fecha . "','" . $email_usuario . "') ";
         $condicion = "id = " . $id;
 
@@ -239,39 +245,42 @@ class ModeloController{
 
         //volvemos a mostrar reservas una vez hecha la reserva
         $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
-        $dato = $update->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
-        $usuario = $update->mostrar("usuarios ", "* " , " dni = '" . $dni . "'");
-        
+       // $dato = $update->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
+        $dato = $update->mostrar_reservas_usuario($id_usuario);
+
+        $usuario = $update->mostrar("usuarios ", "* ", " dni = '" . $dni . "'");
         require_once("vista/mostrar_reservas.php");
     }
     /**
      * Elimina un registro de una tabla dada
      */
-    function eliminar(){   
+    function eliminar()
+    {
 
-        $id = $_GET['id'];
+        $id_eliminar = $_GET['id_eliminar'];
         $tabla  = $_GET['tabla'];
         $redireccion = $_GET['redireccion'];
-        $condicion = "id=".$id;
+        $condicion = "id=" . $id_eliminar;
         $delete = new Modelo;
         $resultado =  $delete->eliminar($tabla, $condicion);
 
         //REDIRECCIONAR AL ELIMINAR
         if ($resultado == 1) { // 1 se elimina OK
-            if($redireccion == 'reserva'){
+            if ($redireccion == 'reserva') {
+                $id_usuario = $_GET['id'];
                 $dni = $_SESSION['dni'];
                 $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
-                $dato = $delete->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
+                //$dato = $delete->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
+                $dato = $delete->mostrar_reservas_usuario($id_usuario);
                 $usuario = $delete->mostrar(" usuarios ", " * ", "dni = '" . $dni . "'");
 
                 require_once("vista/mostrar_reservas.php");
-            }else if ($redireccion == 'reserva_admin'){
+            } else if ($redireccion == 'reserva_admin') {
                 $dni = $_SESSION['dni'];
                 $menus = $delete->mostrar_reservas_admin();
                 $creador = $delete->mostrar(" usuarios ", " * ", "dni = '" . $dni . "'");
                 require_once("vista/mostrar_reservas_admin.php");
-            }    
-            else{
+            } else {
                 $dni = $_SESSION['dni'];
                 $id_admin = $_GET['id_admin'];
 
@@ -279,14 +288,14 @@ class ModeloController{
                 $creador = $delete->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
                 require_once("vista/mostrar_menu.php");
             }
-
         }
     }
 
 
 
 
-    function insertar_menu(){
+    function insertar_menu()
+    {
         $id_admin = $_POST['id_menu_usuario'];
         $dni_admin = $_POST['dni_menu_usuario'];
         $nombre_menu = $_POST['nombre_menu'];
@@ -307,17 +316,19 @@ class ModeloController{
         require_once("vista/mostrar_menu.php");
     }
 
-    function editar_menu(){
+    function editar_menu()
+    {
         $id_menu = $_GET['id'];
         $id_admin = $_GET['id_admin'];
         $menu = new Modelo();
-        $menuEditar = $menu->mostrar(" menu ","*", "id = " . $id_menu);
+        $menuEditar = $menu->mostrar(" menu ", "*", "id = " . $id_menu);
         $creador = $menu->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
         require_once("vista/actualizar_menu.php");
     }
 
 
-    function actualizar_menu(){
+    function actualizar_menu()
+    {
         $id = $_GET['id'];
         $id_admin = $_GET['id_admin'];
         $nombre_menu = $_GET['nombre_menu'];
@@ -341,21 +352,21 @@ class ModeloController{
     /**
      * envia a la pagina de logout con el ususario que quiere cerrar sesión
      */
-    static function salir(){
+    static function salir()
+    {
         $dni = $_SESSION['dni'];
         $volver = new Modelo();
-        $usuario = $volver->mostrar("usuarios","*","dni=".$dni);
+        $usuario = $volver->mostrar("usuarios", "*", "dni=" . $dni);
 
         require_once("vista/logout.php");
     }
 
-        /**
+    /**
      * Envia a vsta de despedida 
      */
-    static function cerrar(){   
-        
+    static function cerrar()
+    {
+
         require_once("vista/despedida.php");
     }
 }
-
-?>

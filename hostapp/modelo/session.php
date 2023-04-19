@@ -10,4 +10,3 @@ $password=@$_SESSION['password'];
 $nombre=@$_SESSION['nombre'];
 $apellido=@$_SESSION['apellido'];
 $email=@$_SESSION['email'];
-

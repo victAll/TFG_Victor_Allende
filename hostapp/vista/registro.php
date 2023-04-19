@@ -14,7 +14,7 @@ include("layouts/header.php");
 <nav class="menuNav">
     <div class="icon">
         <a class="navbar-logo" href="#">
-            <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+            <img src="<?php print HTTP; ?>vista/res/HostApp.png">
         </a>
     </div>
 </nav>
@@ -38,14 +38,14 @@ include("layouts/header.php");
             <label class="fieldsForm ">*Apellido:</label>
             <input class="fieldsForm " name="apellido" type="text " required />
             <label class="fieldsForm ">*Dni:</label>
-            <input class="fieldsForm " name="dni" type="text " required />
+            <input class="fieldsForm " name="dni" type="text " maxlength="10" required />
             <label class="fieldsForm ">*Correo electrónico:</label>
             <input class="fieldsForm " name="email" type="email" required />
             <label class="fieldsForm ">*Contraseña:</label>
             <input class="fieldsForm " name="password" type="password" required />
             <div>
                 <input class="fieldsForm " id="aceptar" type="checkbox" name="aceptarPoliticas" required />
-                <label for="aceptar" class="fieldsForm "> Acepta nuestra politica de privacidad</label>
+                <label for="aceptar" class="fieldsForm ">*Acepta nuestra politica de privacidad</label>
                 <br>
             </div>
             <br>

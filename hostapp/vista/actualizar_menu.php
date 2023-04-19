@@ -21,7 +21,7 @@ if (!empty($creador)) { ?>
     <nav class="menuNav">
         <div class="icon">
             <a class="navbar-logo" href="#">
-                <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+                <img src="<?php print HTTP; ?>vista/res/HostApp.png">
             </a>
         </div>
         <div class="opcionMenuDiv">

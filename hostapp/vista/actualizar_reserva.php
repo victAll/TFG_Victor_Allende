@@ -19,17 +19,27 @@
     <nav class="menuNav">
         <div class="icon">
             <a class="navbar-logo" href="#">
-                <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+                <img src="<?php print HTTP; ?>vista/res/HostApp.png">
             </a>
         </div>
         <div class="opcionMenuDiv">
-            <a id="submit_a" class="btn" href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>&redireccion=reserva" class="btn">Inicio</a> <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=reserva" class="btn">Mostrar Reservar</a>
-            <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
-            <div>
-                <?php echo $nombre . " ";
-                echo $apellido . " ";
-                echo $_SESSION['dni'];  ?>
-            </div>
+            <a id="submit_a" class="btn" href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>&redireccion=reserva" class="btn">Inicio</a>
+            <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=reserva&id=<?php echo $id ?>" class="btn">Mostrar Reservar</a>
+            <ul id="submit_a" class="main-links btn">
+                    <li class="dropdown-li">
+                        Opciones
+                        <ul class="dropdown">
+                            <li><br></li>
+                            <li><?php echo $nombre . " ";?></li>
+                            <li><br></li>
+                            <li><?php echo $apellido. " ";?></li>
+                            <li><br></li>
+                            <!--<li><?php echo $dni . " ";?></li>
+                                    <li><br></li>-->
+                            <li><a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
         </div>
     </nav>
@@ -45,6 +55,7 @@
                 foreach ($value as $valor) : ?>
         <input type="hidden" value="<?php echo $valor['id']; ?>" name="id"></input>
         <input type="hidden" value="<?php echo $valor['dni_usuario']; ?>" name="dni_usuario"></input>
+        <input type="hidden" value="<?php echo $id; ?>" name="id_usuario"></input>
         <label class="fieldsForm ">Nombre:</label>
         <input class="fieldsForm" type="text" value="<?php echo $valor['nombre']; ?>" name="nombre"></input>
         <label class="fieldsForm ">Email:</label>

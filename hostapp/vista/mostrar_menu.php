@@ -22,7 +22,7 @@ if (!empty($creador)) { ?>
     <nav class="menuNav">
         <div class="icon">
             <a class="navbar-logo" href="#">
-                <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+                <img src="<?php print HTTP; ?>vista/res/HostApp.png">
             </a>
         </div>
         <div class="opcionMenuDiv">
@@ -33,12 +33,21 @@ if (!empty($creador)) { ?>
             <a id="submit_a"
                 href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $id_menu; ?>"
                 class="btn">Mostrar Reservar</a>
-            <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
-            <div>
-                <?php echo $nom. " ";
-                echo $ape . " ";
-                echo $dni;  ?>
-            </div>
+                <ul id="submit_a" class="main-links btn">
+                <li class="dropdown-li">
+                    Opciones
+                    <ul class="dropdown">
+                        <li><br></li>
+                        <li><?php echo $nom. " ";?></li>
+                        <li><br></li>
+                        <li><?php echo $ape . " ";?></li>
+                        <li><br></li>
+                        <!--<li><?php echo $dni . " ";?></li>
+                        <li><br></li>-->
+                        <li><a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
 
         </div>
 
@@ -103,7 +112,7 @@ if (!empty($creador)) { ?>
                             href="index.php/?opcion=editar_menu&id=<?php echo $menu['id']; ?>&id_admin=<?php echo $menu['id_admin']; ?>">Editar</a>
                     </td>
                     <td><a class="btn"
-                            href="index.php/?opcion=eliminar&id=<?php echo $menu['id']; ?>&tabla=menu&redireccion=menu&id_admin=<?php echo $menu['id_admin']; ?>">Eliminar</a>
+                            href="index.php/?opcion=eliminar&id_eliminar=<?php echo $menu['id']; ?>&tabla=menu&redireccion=menu&id_admin=<?php echo $menu['id_admin']; ?>">Eliminar</a>
                     </td>
                     <!--<td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $menu['dni_usuario']; ?>" class="btn">Volver</a></td>-->
 

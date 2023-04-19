@@ -14,7 +14,7 @@ include("layouts/header.php");
 <nav class="menuNav">
     <div class="icon">
         <a class="navbar-logo" href="#">
-            <img src="<?php print HTTP; ?>vista/res/LogoCXC.png">
+            <img src="<?php print HTTP; ?>vista/res/HostApp.png">
         </a>
     </div>
 </nav>
@@ -39,8 +39,6 @@ include("layouts/header.php");
 
             $_SESSION['dni'] = $_POST['dni'];
             $_SESSION['password'] = $_POST['password'];
-            echo $_SESSION['dni'] ;
-            echo $_SESSION['password'];
         }
         ?>
 
