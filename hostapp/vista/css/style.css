@@ -338,7 +338,7 @@ aside {
     justify-content: center;
     width: 60%;
     height: 70%;
-    padding: 2%;
+    padding: 1%;
 }
 
 .formLoginModificar {
@@ -346,7 +346,7 @@ aside {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 30%;
+    width: 60%;
     height: 70%;
     padding: 1%;
 }
