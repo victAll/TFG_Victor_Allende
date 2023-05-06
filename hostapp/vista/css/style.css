@@ -521,13 +521,12 @@ Estilo e imagen para elemento con class seccion1
 }
 
 .dropdown-li:hover .dropdown {
-    display: block;
+    display: flex;
+    flex-direction: column;
     opacity: 1;
 }
 
 .dropdown {
-    margin: 0;
-    padding: 0;
     width: 100%;
     position: absolute;
     display: none;
@@ -535,6 +534,8 @@ Estilo e imagen para elemento con class seccion1
 }
 
 .dropdown li {
+    margin: 1%;
+    padding: 1%;
     list-style: none;
     text-align: center;
 }

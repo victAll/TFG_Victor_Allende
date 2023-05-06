@@ -34,7 +34,7 @@ if (!empty($usuario)) { ?>
             <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=reserva" class="btn">Reservar</a>
             <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=reserva&id=<?php echo $id ?>"
                 class="btn">Mis Reservas</a>
-            <ul id="submit_a" class="main-links btn">
+            <ul id="submit_a" class="btn">
                 <li class="dropdown-li">
                     Opciones
                     <ul class="dropdown">

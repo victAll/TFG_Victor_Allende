@@ -24,8 +24,8 @@
         </div>
         <div class="opcionMenuDiv">
             <a id="submit_a" class="btn" href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>&redireccion=reserva" class="btn">Inicio</a>
-            <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=reserva&id=<?php echo $id ?>" class="btn">Mostrar Reservar</a>
-            <ul id="submit_a" class="main-links btn">
+            <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=reserva&id=<?php echo $id ?>" class="btn">Reservas</a>
+            <ul id="submit_a" class="btn">
                     <li class="dropdown-li">
                         Opciones
                         <ul class="dropdown">

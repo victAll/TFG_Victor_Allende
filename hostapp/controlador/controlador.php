@@ -53,7 +53,7 @@ class ModeloController
         $validar_modelo = new Modelo();
         //recuperamos las variables
         $dni = $_REQUEST['dni'];
-        $password = $_REQUEST['password'];
+        $password = md5($_REQUEST['password']);
         $data = "dni= '" . $dni . "' and password ='" . $password . "'";
 
         $usuario = $validar_modelo->mostrar("usuarios", "*", $data);
@@ -97,7 +97,8 @@ class ModeloController
         $apellido = $_POST['apellido'];
         $dni = $_POST['dni'];
         $correo = $_POST['email'];
-        $password = $_POST['password'];
+        $password = md5($_POST['password']);
+
         $tipo = $_POST['tipo'];
         $campos = " (nombre, apellido, dni, email, password, tipo_usuario) ";
 
@@ -106,24 +107,22 @@ class ModeloController
         $registrar = new Modelo();
 
         $errores = validateRegistro($nombre,$apellido,$dni,$correo, $password);
+        
 
         // Si han habido errores se muestran
         if (isset($errores)) {
-            $resExiste = $errores; // pasamos los errores de falla de formularipo a la vista
-            //print_r($errores);
+            $resExiste = $errores; // pasamos los errores de falla de formulario a la vista
             require_once("vista/registro.php");
         } else {
             //validar si el usuario existe antes de registrar
-            $usuario = $registrar->mostrar("usuarios", "*", "dni=" . $dni);
+            $usuario = $registrar->mostrar("usuarios", "*", " dni='" . $dni."'");
             if ($usuario != null) {
-                $resExiste = "El usuario con dni: " . $dni . " ya está registrado, inténtalo nuevamente...";
-                require_once("vista/registro.php");
+                $resExiste = "El usuario con dni: " . $dni . " ya está registrado, inténtalo nuevamente...";require_once("vista/registro.php");
             } else {
 
                 $registrar->insertar(" usuarios ", $campos, $data);
-                $usuario = $registrar->mostrar("usuarios", "*", "dni=" . $dni);
+                $usuario = $registrar->mostrar("usuarios", "*", "dni='" . $dni."'");
                 $menu = $registrar->mostrar("menu", "*", 1);
-
                 require_once("vista/bienvenida.php");
             }
         }

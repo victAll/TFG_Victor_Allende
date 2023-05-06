@@ -16,10 +16,9 @@ CREATE TABLE usuarios(
     apellido varchar(50) not null,
     dni varchar(10) not null,
 	email varchar(30) not null,
-	password varchar(30) not null,
+	password varchar(255) not null,
 	tipo_usuario varchar(2) DEFAULT 'n',
-	CONSTRAINT dni_usuario_un UNIQUE (dni),
-	CONSTRAINT email_un UNIQUE (email)
+	CONSTRAINT dni_usuario_un UNIQUE (dni)
 );
 
 CREATE TABLE menu(
@@ -45,12 +44,17 @@ CREATE TABLE reservas(
 );
 
 -- Usuarios Admin
-insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Victor','Allende','11737871-M', 'victor@gmail.es','victor', 'a');
-insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Mateo','Allende','40161527-P', 'mateo@gmail.es','mateo', 'a');
+-- victor
+insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Victor','Allende','11737871-M', 'victor@gmail.es','ffc150a160d37e92012c196b6af4160d', 'a');
+-- mateo
+insert into usuarios  (nombre, apellido, dni, email, password, tipo_usuario)  values('Mateo','Allende','40161527-P', 'mateo@gmail.es','5b4c6f05e39f90fcebd51be99338c42e', 'a');
 -- Usuarios normales
-insert into usuarios  (nombre, apellido, dni, email, password)  values('Miguel','Lopez','26028544-L', 'victor@gmail.es','victor');
-insert into usuarios  (nombre, apellido, dni, email, password)  values('Luis','Perez','91363983-W', 'pepe@gmail.es','pepe');
-insert into usuarios  (nombre, apellido, dni, email, password)  values('Jose','Rodriguez','53497522-M', 'jose@gmail.es','jose');
+-- miguel
+insert into usuarios  (nombre, apellido, dni, email, password)  values('Miguel','Lopez','26028544-L', 'Miguel@gmail.es','9eb0c9605dc81a68731f61b3e0838937');
+-- luis
+insert into usuarios  (nombre, apellido, dni, email, password)  values('Luis','Perez','91363983-W', 'pepe@gmail.es','502ff82f7f1f8218dd41201fe4353687');
+-- jose
+insert into usuarios  (nombre, apellido, dni, email, password)  values('Jose','Rodriguez','53497522-M', 'jose@gmail.es','662eaa47199461d01a623884080934ab');
 -- Menu
 insert into menu  (id_admin,nombre_menu,entrante,plato_principal,precio)  values(1,'El carnívoro','Surtido Ibéricos', 'Chuletón de Buey 1/2 kg.',45.99);
 insert into menu  (id_admin,nombre_menu,entrante,plato_principal,precio)  values(1,'El Vegetariano','Ensalada Capresse', 'Berenjenas con bechamel',13.59);

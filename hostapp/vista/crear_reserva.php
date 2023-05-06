@@ -26,9 +26,8 @@ include("layouts/header.php");
             <a id="submit_a" class="btn"
                 href="index.php/?opcion=volver&id=<?php echo  @$_SESSION['dni']; ?>&redireccion=reserva">Inicio</a>
             <a id="submit_a" class="btn"
-                href="index.php?opcion=mostrar_listas&redireccion=reserva&id=<?php echo  $id; ?>">Mostrar
-                Reservar</a>
-            <ul id="submit_a" class="main-links btn">
+                href="index.php?opcion=mostrar_listas&redireccion=reserva&id=<?php echo  $id; ?>">Reservas</a>
+            <ul id="submit_a" class="btn">
                 <li class="dropdown-li">
                     Opciones
                     <ul class="dropdown">

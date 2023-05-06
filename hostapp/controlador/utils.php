@@ -29,15 +29,17 @@ $ = Define que la expresión debe aplicar hasta el final de la cadena
  */
 function isValidText($text)
 {
-        $pattern = "/^[a-zA-Z\sñáéíóúÁÉÍÓÚ]{5,}$/";
+        $pattern = "/^[a-zA-Z\sñáéíóúÁÉÍÓÚ]{4,}$/";
         return preg_match($pattern, trim($text));
 }
 
-/*function isValidPass($text)
-{
-        $pattern = "/^[a-zA-Z\sñáéíóúÁÉÍÓÚ]{5,}$/";
-        return preg_match($pattern, trim($text));
-}*/
+function isValidPass($password)
+{       $valid = true;
+        if(!isset($password)  || strlen($password) < 4){
+                $valid = false;
+        }
+       return $valid;
+}
 
 /**
  * Funcion para validar el dni
@@ -69,7 +71,7 @@ function validateDni($dni)
  */
 function validateRegistro($nombre, $apellido, $dni, $correo, $password)
 {
-        $errores = "";
+        $errores = null;
         if (!validaEmail($correo)) {
                 $errores = "Correo electrónico incorrecto <br>";
         }
@@ -82,8 +84,8 @@ function validateRegistro($nombre, $apellido, $dni, $correo, $password)
         if (!validateDni($dni)) {
                 $errores = $errores . " DNI incorrecto utilice formato: 00000000-X <br>";
         }        
-        if (!isValidText($password)) {
-                $errores = $errores . " Password incorrecto  <br>";
+        if (!isValidPass($password)) {
+                $errores = $errores . " Password incorrecto mínimo 4 caracteres <br>";
         }
         return $errores;
 }

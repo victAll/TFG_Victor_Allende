@@ -24,11 +24,13 @@ class Modelo{
      }
 
 
+     /**Funcion generica, recupera cualquier registro de cualquier tabla 
+      * a partir de la parametrización parametrizada 
+    */
      public function mostrar($tabla, $campos, $condicion){
 
-        try {//
+        try {
             $consul="select " .$campos. " from ".$tabla." where ".$condicion.";";
-            //echo $consul;
                 $resu=$this->db->query($consul);
                 while($filas = $resu->FETCHALL(PDO::FETCH_ASSOC)) {
                     $this->datos[]=$filas;
@@ -111,5 +113,3 @@ class Modelo{
 
      }
 }
-
-?>

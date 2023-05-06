@@ -31,8 +31,8 @@ if (!empty($usuario[0])) {
                 class="btn">Ver Menu</a>
             <a id="submit_a"
                 href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $id; ?>"
-                class="btn">Ver Reservar</a>
-                <ul id="submit_a" class="main-links btn">
+                class="btn">Reservas</a>
+                <ul id="submit_a" class="btn">
                 <li class="dropdown-li">
                     Opciones
                     <ul class="dropdown">

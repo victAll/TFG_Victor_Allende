@@ -41,7 +41,7 @@ include("layouts/header.php");
             <label class="fieldsForm ">*Apellido:</label>
             <input class="fieldsForm " name="apellido" type="text " maxlength="50" required />
             <label class="fieldsForm ">*Dni:</label>
-            <input class="fieldsForm " name="dni" type="text " maxlength="10" required  placeholder="53380908-R"/>
+            <input class="fieldsForm " name="dni" type="text " maxlength="10" required  placeholder="Ej: 53380908-R"/>
             <label class="fieldsForm ">*Correo electrónico:</label>
             <input class="fieldsForm " name="email" type="text" maxlength="30" required />
             <label class="fieldsForm ">*Contraseña:</label>

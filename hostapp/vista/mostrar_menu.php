@@ -32,7 +32,7 @@ if (!empty($creador)) { ?>
             <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=menu" class="btn">Crear Menu</a>
             <a id="submit_a"
                 href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $id_menu; ?>"
-                class="btn">Mostrar Reservar</a>
+                class="btn">Reservas</a>
                 <ul id="submit_a" class="main-links btn">
                 <li class="dropdown-li">
                     Opciones

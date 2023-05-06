@@ -33,13 +33,22 @@ if (!empty($creador)) { ?>
                 class="btn">Ver Menu</a>
             <a id="submit_a"
                 href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $id_admin; ?>"
-                class="btn">Ver Reservar</a>
-            <a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>
-            <div>
-                <?php echo $nom. " ";
-                echo $ape . " ";
-                echo $dni;  ?>
-            </div>
+                class="btn">Reservas</a>
+            <ul id="submit_a" class="btn">
+                <li class="dropdown-li">
+                    Opciones
+                    <ul class="dropdown">
+                        <li><br></li>
+                        <li><?php echo $nom . " ";?></li>
+                        <li><br></li>
+                        <li><?php echo $ape. " ";?></li>
+                        <li><br></li>
+                        <!--<li><?php echo $dni . " ";?></li>
+                        <li><br></li>-->
+                        <li><a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
 
         </div>
     </nav>
