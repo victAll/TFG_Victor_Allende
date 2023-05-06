@@ -1,467 +1,502 @@
-    /*
+/*
  Estilos globales
  */
-    
-    * {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        box-sizing: border-box;
-    }
-    
-    .fieldsForm {
-        height: 30px;
-    }
-    
-    .aviso {
-        height: 35px;
-        padding-bottom: 3%;
-        color: red;
-    }
-    /*
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.fieldsForm {
+    height: 25px;
+    margin-left: 2%;
+}
+
+.aviso {
+    height: 25px;
+    padding-bottom: 3%;
+    color: red;
+}
+
+.divErrores {
+    display: flex;
+    padding-bottom: 50px;
+}
+
+
+/*
 Estilo para elemento html
 */
-    
-    html {
-        background-image: linear-gradient( rgb(252, 250, 250), rgb(218, 215, 215));
-    }
-    
-    .tabla {
-        width: 100%;
-        border: 1px solid black;
-    }
-    
-    .btn {
-        background-color: rgb(129, 165, 245);
-        color: black;
-        padding: 10px 20px;
-        display: inline-block;
-        text-decoration: none;
-    }
-    
-    .btn:hover {
-        background-color: rgb(110, 148, 230);
-        color: white;
-    }
-    
-    .main-nav a label {
-        margin: 10px;
-        border-radius: 5px;
-        height: 10%;
-        display: block;
-        padding: 1%;
-        text-decoration: none;
-    }
-    /*
+
+html {
+    background-image: linear-gradient( rgb(252, 250, 250), rgb(218, 215, 215));
+}
+
+.tabla {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.btn {
+    background-color: rgb(129, 165, 245);
+    font-weight: bold;
+    padding: 10px 20px;
+    display: inline-block;
+    text-decoration: none;
+    font-style: normal;
+    margin: 10px;
+}
+
+.btn:hover {
+    background-color: rgb(110, 148, 230);
+    color: white;
+}
+
+.main-nav a label {
+    margin: 10px;
+    border-radius: 5px;
+    height: 10%;
+    display: block;
+    padding: 1%;
+    text-decoration: none;
+}
+
+
+/*
 Estilo para elemento body
 */
-    
-    body {
-        font-family: Verdana, Geneva, sans-serif;
-        font-weight: bold;
-        border-radius: 8px;
-        color: rgb(46, 42, 42);
-        /*https://www.freecodecamp.org/espanol/news/html-vs-body-como-configurar-el-ancho-y-el-alto-para-el-tamano-de-la-pagina-completa/*/
-        min-height: 100vh;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-    
-    *
-    /*
+
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+    color: rgb(46, 42, 42);
+    /*https://www.freecodecamp.org/espanol/news/html-vs-body-como-configurar-el-ancho-y-el-alto-para-el-tamano-de-la-pagina-completa/*/
+    min-height: 100vh;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+*
+/*
 Estilo para elemento header
 */
-    
-    .principal {
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-    }
-    
-    header {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-content: stretch;
-        color: rgb(46, 42, 42);
-        width: 98%;
-        height: 0%;
-        border-radius: 10px;
-        margin: 1%;
-    }
-    /* footer */
-    
-    .wraper {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px;
-        margin: 3%;
-        background-image: linear-gradient( rgb(252, 250, 250), rgb(218, 215, 215));
-    }
-    
-    .avisos {
-        display: flex;
-        flex-direction: column;
-        width: 20%;
-        border-color: #82aaf5;
-    }
-    
-    .avisos p {
-        font-size: 14px;
-    }
-    
-    .footer-logo {
-        display: flex;
-        flex-direction: row;
-        vertical-align: middle;
-        align-items: left;
-        width: 15%;
-        text-decoration: none;
-    }
-    /*https://www.html.am/html-codes/character-codes/html-copyright-code.cfm*/
-    
-    .footer-logo img {
-        float: left;
-        width: 100%;
-        height: auto;
-    }
-    /* fin footer */
-    
-    .wraper_reserva {
-        display: flex;
-        justify-content: center;
-        padding: 10px;
-        margin: 1% 25% 1% 25%;
-    }
-    
-    .wraper_reserva input {
-        margin: 1%;
-    }
-    
-    .formSinLogin {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 98%;
-        height: 20%;
-        margin-top: 10px;
-        color: rgb(46, 42, 42);
-        border-radius: 10px;
-        margin: 1%;
-    }
-    
-    .wraper_modificar {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        padding: 10px;
-        margin: 1%;
-    }
-    
-    .wraper_form {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        margin: 1% 10% 1% 10%;
-    }
-    
-    .wraper_form input {
-        margin: 1%;
-    }
-    
-    section {
-        float: left;
-        width: 98%;
-        height: 30%;
-        padding: 10px;
-        margin-top: 10px;
-        color: rgb(46, 42, 42);
-        border-radius: 10px;
-        margin: 1%;
-    }
-    
-    .section_controles {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 98%;
-        height: 20%;
-        margin-top: 10px;
-        color: rgb(46, 42, 42);
-        border-radius: 10px;
-        margin: 1%;
-    }
-    /*
+
+.principal {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: stretch;
+    color: rgb(46, 42, 42);
+    width: 98%;
+    height: 0%;
+    border-radius: 10px;
+    margin: 1%;
+}
+
+
+/* footer */
+
+.wraper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 3%;
+    background-image: linear-gradient( rgb(252, 250, 250), rgb(218, 215, 215));
+}
+
+.avisos {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    border-color: #82aaf5;
+}
+
+.avisos p {
+    font-size: 12px;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    align-items: left;
+    width: 15%;
+    text-decoration: none;
+}
+
+
+/*https://www.html.am/html-codes/character-codes/html-copyright-code.cfm*/
+
+.footer-logo img {
+    float: left;
+    width: 100%;
+    height: auto;
+}
+
+
+/* fin footer */
+
+.wraper_reserva {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: 1% 25% 1% 25%;
+}
+
+.wraper_reserva input {
+    margin: 1%;
+}
+
+.formSinLogin {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 98%;
+    height: 20%;
+    margin-top: 10px;
+    color: rgb(46, 42, 42);
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.wraper_modificar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    margin: 1%;
+}
+
+.wraper_form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 1% 10% 1% 10%;
+}
+
+.wraper_form input {
+    margin: 1%;
+}
+
+section {
+    float: left;
+    width: 98%;
+    height: 30%;
+    padding: 10px;
+    margin-top: 10px;
+    color: rgb(46, 42, 42);
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.section_controles {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 98%;
+    height: 20%;
+    margin-top: 10px;
+    color: rgb(46, 42, 42);
+    border-radius: 10px;
+    margin: 1%;
+}
+
+
+/*
 Estilo para elemento footer
 */
-    
-    footer {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding-top: 1%;
-        width: 98%;
-        clear: both;
-        border-radius: 10px;
-        margin: 1%;
-    }
-    
-    #submit_a {
-        font-weight: bold;
-        cursor: pointer;
-        padding: 5px;
-        margin: 0 10px 20px 0;
-        border: 1px solid #ccc;
-        background: 41, 243, 14;
-        border-radius: 8px 8px 8px 8px;
-    }
-    
-    #submit:hover {
-        background-color: rgb(71, 140, 219);
-        color: white;
-    }
-    
-    .main-nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        height: 15%;
-    }
-    
-    table {
-        width: 100%;
-        border: 1px solid rgb(26, 0, 0);
-    }
-    /*https://www.aprenderaprogramar.com/*/
-    
-    thead tr td {
-        background-color: rgb(202, 217, 235);
-    }
-    
-    table tbody tr td:nth-child(odd) {
-        background-color: rgb(225, 230, 245);
-        font-family: Verdana, Geneva, sans-serif;
-        font-size: 12px;
-    }
-    
-    table tbody tr td:nth-child(even) {
-        background-color: rgb(188, 229, 245);
-        font-family: Verdana, Geneva, sans-serif;
-        font-size: 12px;
-    }
-    
-    .navbar-logo {
-        display: inline-block;
-        vertical-align: middle;
-        width: 100%;
-    }
-    
-    .navbar-logo img {
-        float: left;
-        width: 100%;
-        height: auto;
-    }
-    
-    h1,
-    h2,
-    h3 {
-        width: 100%;
-        text-align: center;
-    }
-    
-    aside {
-        position: relative;
-        height: 80%;
-        width: 30%;
-        float: left;
-        border-radius: 10px;
-        margin: 1%;
-    }
-    
-    .productosAside {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 50%;
-    }
-    
-    .form1 {
-        display: flex;
-        flex-direction: column;
-        padding: 10%;
-        width: 80%;
-        height: 100%;
-    }
-    
-    .formLogin {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        width: 35%;
-        height: 70%;
-        padding: 1%;
-    }
-    
-    .formLogin2 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 60%;
-        height: 70%;
-        padding: 2%;
-    }
-    
-    .formLoginModificar {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        width: 30%;
-        height: 70%;
-        padding: 1%;
-    }
-    
-    .controles {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        width: 40%;
-        height: 70%;
-    }
-    
-    .formRegistrate {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        width: 100%;
-        height: 100%;
-    }
-    
-    .control_central {
-        float: right;
-        display: flex;
-        flex-direction: column;
-        height: 50%;
-        width: 65%;
-    }
-    
-    .muestraReservas {
-        width: 80%;
-    }
-    
-    .contenedorReservas {
-        display: flex;
-        justify-content: center;
-    }
-    
-    .menuNav {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        width: 100%;
-        padding-left: 0;
-        margin-bottom: 0;
-        list-style: none;
-    }
-    
-    .icon {
-        width: 65%;
-    }
-    
-    .opcionMenuDiv {
-        width: 30%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-    }
-    
-    .wrap {
-        max-width: 100%;
-        margin: 0 auto;
-        background-image: linear-gradient(#a6eeeef8, #92b5f7);
-    }
-    /*.column-2.carta {
+
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 1%;
+    width: 98%;
+    clear: both;
+    border-radius: 10px;
+    margin: 1%;
+}
+
+#submit_a {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 10px 20px 0;
+    border: 1px solid #ccc;
+    background: 41, 243, 14;
+    border-radius: 8px 8px 8px 8px;
+}
+
+#submit:hover {
+    background-color: rgb(71, 140, 219);
+    color: white;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 15%;
+}
+
+table {
+    width: 100%;
+    border: 1px solid rgb(26, 0, 0);
+}
+
+
+/*https://www.aprenderaprogramar.com/*/
+
+thead tr td {
+    background-color: rgb(202, 217, 235);
+}
+
+table tbody tr td:nth-child(odd) {
+    background-color: rgb(225, 230, 245);
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+}
+
+table tbody tr td:nth-child(even) {
+    background-color: rgb(188, 229, 245);
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+}
+
+.navbar-logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.navbar-logo img {
+    float: left;
+    width: 100%;
+    height: auto;
+}
+
+h1,
+h2,
+h3 {
+    width: 100%;
+    text-align: center;
+}
+
+aside {
+    position: relative;
+    height: 80%;
+    width: 30%;
+    float: left;
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.productosAside {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+}
+
+.form1 {
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+    width: 80%;
+    height: 100%;
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 35%;
+    height: 70%;
+    padding: 1%;
+}
+
+.formLogin2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    height: 70%;
+    padding: 2%;
+}
+
+.formLoginModificar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 30%;
+    height: 70%;
+    padding: 1%;
+}
+
+.controles {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 40%;
+    height: 70%;
+}
+
+.formRegistrate {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.control_central {
+    float: right;
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    width: 65%;
+}
+
+.muestraReservas {
+    width: 100%;
+}
+
+.contenedorReservas {
+    display: flex;
+    justify-content: center;
+}
+
+.reservas {
+    text-align: center;
+}
+
+.menuNav {
+    display: flex;
+    flex-direction: row;
+    /*flex-wrap: wrap;
+        justify-content: space-between;*/
+    width: 100%;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.icon {
+    width: 60%;
+}
+
+.opcionMenuDiv {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.wrap {
+    max-width: 100%;
+    margin: 0 auto;
+    background-image: linear-gradient(#a6eeeef8, #92b5f7);
+}
+
+
+/*.column-2.carta {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         column-gap: 1rem;
         row-gap: 1rem;
     }*/
-    
-    .column-2.carta {
-        width: 80%;
-        display: flex;
-        flex-direction: row;
-    }
-    
-    .plato-carta {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        border-radius: 6px;
-    }
-    
-    .img-plato-carta {
-        display: flex;
-        width: 50%;
-        justify-content: center;
-    }
-    
-    .img-plato-carta img {
-        max-width: 100px;
-        max-height: 75px;
-    }
-    
-    .title-plato-carta {
-        border-bottom: none;
-        border-top: none;
-        flex-basis: 60%;
-        padding: 0 1rem;
-    }
-    
-    .titulo_menu {
-        font-size: 20px;
-        text-decoration: underline;
-    }
-    /*
+
+.column-2.carta {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+.plato-carta {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.img-plato-carta {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+}
+
+.img-plato-carta img {
+    max-width: 100px;
+    max-height: 75px;
+}
+
+.title-plato-carta {
+    border-bottom: none;
+    border-top: none;
+    flex-basis: 60%;
+    padding: 0 1rem;
+}
+
+.titulo_menu {
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+
+/*
 Estilo e imagen para elemento con class seccion1
 */
-    
-    .parallax {
-        background: #fff fixed no-repeat 50% 50%;
-        background-size: cover;
-    }
-    
-    #section1 {
-        background-image: url('./vista/res/img_1.jpg');
-    }
-    /**Custom select https://www.antofernandez.com/personalizar-un-select-con-css/ */
-    /* Eliminamos la fecha que por defecto aparece en el desplegable */
-    
-    .select {
-        display: inline-block;
-        width: 100%;
-        cursor: pointer;
-        padding: 7px 10px;
-        height: 30px;
-        background: #f0f0f0;
-        color: #302b2b;
-        font-family: 'Quicksand', sans-serif;
-        border-radius: 8px;
-    }
-    
-    .selectFecha {
+
+.parallax {
+    background: #fff fixed no-repeat 50% 50%;
+    background-size: cover;
+}
+
+#section1 {
+    background-image: url('./vista/res/img_1.jpg');
+}
+
+
+/**Custom select https://www.antofernandez.com/personalizar-un-select-con-css/ */
+
+
+/* Eliminamos la fecha que por defecto aparece en el desplegable */
+
+.select {
+    display: inline-block;
+    width: 93%;
+    cursor: pointer;
+    padding: 7px 10px;
+    height: 30px;
+    background: #f0f0f0;
+    color: #302b2b;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 8px;
+}
+
+
+/*.selectFecha {
         display: inline-block;
         width: 93%;
         cursor: pointer;
@@ -471,35 +506,41 @@ Estilo e imagen para elemento con class seccion1
         color: #302b2b;
         font-family: 'Quicksand', sans-serif;
         border-radius: 8px;
-    }
-    /*https://devxdev.net/tutoriales/menu-desplegable-html-css/*/
     
-    .dropdown-li {
-        position: relative;
-        list-style: none;
+}*/
+
+
+/*https://devxdev.net/tutoriales/menu-desplegable-html-css/*/
+
+
+/*CERRAR SESION*/
+
+.dropdown-li {
+    position: relative;
+    list-style: none;
+}
+
+.dropdown-li:hover .dropdown {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: absolute;
+    display: none;
+    background: rgb(34, 119, 231);
+}
+
+.dropdown li {
+    list-style: none;
+    text-align: center;
+}
+
+@media (max-width:680px) {
+    .column-2.carta {
+        grid-template-columns: repeat(1, 1fr);
     }
-    
-    .dropdown-li:hover .dropdown {
-        display: block;
-        opacity: 1;
-    }
-    
-    .dropdown {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        position: absolute;
-        display: none;
-        background: rgb(34, 119, 231);
-    }
-    
-    .dropdown li {
-        list-style: none;
-        text-align: center;
-    }
-    
-    @media (max-width:680px) {
-        .column-2.carta {
-            grid-template-columns: repeat(1, 1fr);
-        }
-    }
+}

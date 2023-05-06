@@ -15,7 +15,6 @@ class Modelo{
 
     public function insertar($tabla, $campos,$data){
         $consulta="insert into ".$tabla. " " . $campos ." values(". $data .")";
-
         $resultado=$this->db->query($consulta);
         if ($resultado) {
             return true;
@@ -97,7 +96,7 @@ class Modelo{
      }
 
      public function mostrar_reservas_usuario($id){
-        $consul = "select m.nombre_menu as nombre_menu, m.entrante as entrante_menu, m.plato_principal as principal_menu, m.precio as precio_menu,
+        $consul = "select m.id as idMenu, m.nombre_menu as nombre_menu, m.entrante as entrante_menu, m.plato_principal as principal_menu, m.precio as precio_menu,
         res.id as id, res.nombre as nombre_reserva, res.fecha_reserva , res.email_usuario, res.dni_usuario as dni_usuario, res.id_usuario as id_usuario_res
         from menu m
        INNER JOIN reservas res

@@ -70,7 +70,7 @@ require_once("controlador/utils.php");
                 <br>
                 <?php
                 } ?>
-                <table>
+                <table class="reservas">
                     <br>
                     <thead>
                         <tr>
@@ -103,10 +103,9 @@ require_once("controlador/utils.php");
                             <td><a class="btn" href="index.php/?opcion=editar_reserva&id=<?php echo $valor['id']; ?>"
                                     class="btn btn-primary">Editar</a></td>
                             <td><a class="btn"
-                                    href="index.php/?opcion=eliminar&id_eliminar=<?php echo $valor['id']; ?>&tabla=reservas&redireccion=reserva&id=<?php echo $id; ?>"
+                                    href="index.php/?opcion=eliminar&id_eliminar=<?php echo $valor['id']; ?>&tabla=reservas&redireccion=reserva&id=<?php echo $valor['id_usuario_res']; ?>"
                                     class="btn btn btn-primary">Eliminar</a></td>
-
-
+                                    
                             <?php endforeach;
                             } ?>
 

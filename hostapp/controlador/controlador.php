@@ -1,6 +1,7 @@
 <?php
 require_once("modelo/modelo.php");
 require_once("modelo/session.php");
+require_once("utils.php");
 
 class ModeloController
 {
@@ -55,14 +56,14 @@ class ModeloController
         $password = $_REQUEST['password'];
         $data = "dni= '" . $dni . "' and password ='" . $password . "'";
 
-
         $usuario = $validar_modelo->mostrar("usuarios", "*", $data);
         $menu = $validar_modelo->mostrar("menu", "*", 1);
 
         if (empty($usuario)) {
             //devolvemos mensje a la vuista en caso de no estar el ususio que se intenta logear
             $resVacia = "El Dni o la contraseña no son correctos, registrese o intentelo nuevamente...";
-            header("location:" . urlsite);
+            // header("location:" . urlsite);
+            require_once("vista/login.php");
         } else {
             foreach ($usuario as $key => $value) :
                 foreach ($value as $v) :
@@ -104,21 +105,27 @@ class ModeloController
 
         $registrar = new Modelo();
 
-        //validar si el usuario existe antes de registrar
-        $usuario = $registrar->mostrar("usuarios", "*", "dni=" . $dni);
-        if ($usuario != null) {
+        $errores = validateRegistro($nombre,$apellido,$dni,$correo, $password);
 
-            $resExiste = "El usuario con dni: " . $dni . " ya está registrado, inténtalo nuevamente...";
-            //header("location:".urlsite);
-
+        // Si han habido errores se muestran
+        if (isset($errores)) {
+            $resExiste = $errores; // pasamos los errores de falla de formularipo a la vista
+            //print_r($errores);
             require_once("vista/registro.php");
         } else {
-
-            $registrar->insertar(" usuarios ", $campos, $data);
+            //validar si el usuario existe antes de registrar
             $usuario = $registrar->mostrar("usuarios", "*", "dni=" . $dni);
-            $menu = $registrar->mostrar("menu", "*", 1);
+            if ($usuario != null) {
+                $resExiste = "El usuario con dni: " . $dni . " ya está registrado, inténtalo nuevamente...";
+                require_once("vista/registro.php");
+            } else {
 
-            require_once("vista/bienvenida.php");
+                $registrar->insertar(" usuarios ", $campos, $data);
+                $usuario = $registrar->mostrar("usuarios", "*", "dni=" . $dni);
+                $menu = $registrar->mostrar("menu", "*", 1);
+
+                require_once("vista/bienvenida.php");
+            }
         }
     }
 
@@ -144,7 +151,8 @@ class ModeloController
     /**
      * Recupera el listado de reservas y las envia a la vista por usuario logeado
      */
-    static function mostrar_listas(){
+    static function mostrar_listas()
+    {
 
         $redireccion = $_GET['redireccion'];
         $listar = new Modelo();
@@ -185,9 +193,11 @@ class ModeloController
         $nombre = $_POST['nombre_res'] . " " . $_POST['apellido_res'];
         $dni_usuario = $_POST['dni_res'];
         $id_menu = $_POST['sel_menu'];
-        //formateo fecha
+        //formateo fecha retorna un objeto Date
         $fecha = date_create($_POST['fecha_reserva_res']);
+        //Damos el formato 
         $fecha_formateada = date_format($fecha, 'Y-m-d');
+        //guardamos fehca formateada
         $fecha_reserva = $fecha_formateada;
 
         $menu_email_res = $_POST['menu_email_res'];
@@ -195,14 +205,12 @@ class ModeloController
         $campos = " (id_usuario ,dni_usuario, id_menu, nombre, fecha_reserva, email_usuario) ";
 
         $data = $id_usuario . ", '" . $dni_usuario . "' ,'" . $id_menu . "','" . $nombre . "', '" . $fecha_reserva . "', '" . $menu_email_res . "'";
-        //$data2 = " dni= '" . $dni. "'";
         $reserva = new Modelo();
 
         $reserva->insertar(" reservas ", $campos, $data);
 
         //volvemos a mostrar reservas una vez hecha la reserva
         $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
-        //$dato = $reserva->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
         $dato = $reserva->mostrar_reservas_usuario($id_usuario);
 
         $usuario = $reserva->mostrar("usuarios ", "*", " id = '" . $id_usuario . "'");
@@ -245,7 +253,7 @@ class ModeloController
 
         //volvemos a mostrar reservas una vez hecha la reserva
         $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
-       // $dato = $update->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
+        // $dato = $update->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
         $dato = $update->mostrar_reservas_usuario($id_usuario);
 
         $usuario = $update->mostrar("usuarios ", "* ", " dni = '" . $dni . "'");

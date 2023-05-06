@@ -49,16 +49,15 @@ include("layouts/header.php");
 </header>
 
 <div class="wraper_form">
-    <h1 class="text_center">Haz tu reserva</h1>
+    <h1 class="text_center">Haz tu reserva!</h1>
     <form class="formLogin mb-3" name="crear_reserva_form" method="post">
         <?php
         if (!empty($usuario[0])) { ?>
         <?php
                 foreach ($usuario as $key => $value) :
                     foreach ($value as $v) : ?>
-        <h2><?php echo $v['nombre'] . " ";
-                            echo $v['apellido']; ?></h2>
-        <br>
+        <h2><?php echo $v['nombre'] . " "; echo $v['apellido']; ?></h2>
+        
         <input class="" type="hidden" name="id_res" value="<?php echo $v['id']; ?>" /><br>
         <input class="" type="hidden" name="dni" value="<?php echo $v['dni']; ?>" /><br>
         <input class="" type="hidden" name="menu_email_usuario" value="<?php echo $v['email']; ?>" /><br>
@@ -77,10 +76,12 @@ include("layouts/header.php");
                 ?>
         <label class="fieldsForm" for="">Seleccione menú:</label> <br>
         <select class="select" id="sel_menu" name="sel_menu" required>
-            <?php
+            <?php   
                     foreach ($menu as $key => $value) :
                         foreach ($value as $v) :
-                            echo '<option value="' . $v['id'] . '">' . $v['nombre_menu']."         ". $v['entrante'] ."         ". $v['plato_principal'] . '</option>';
+                            if(isset($v['id'])){
+                                echo '<option value="' . $v['id'] . '">' . $v['nombre_menu']."         ". $v['entrante'] ."         ". $v['plato_principal'] . '</option>';
+                            }
                     ?>
             <?php
                         endforeach;
@@ -97,7 +98,7 @@ include("layouts/header.php");
         } ?>
         <!-- Campos libres de edición sin información desde base de datos a introducir por el ususario que hce la reserva-->
         <label class="fieldsForm" for="">Fecha</label><br>
-        <input class="selectFecha" type="date" name="fecha_reserva_res" required /><br>
+        <input class="select" type="date" name="fecha_reserva_res" required /><br>
 
 
         <input class="btn" type="submit" name="btn" value="Reservar">

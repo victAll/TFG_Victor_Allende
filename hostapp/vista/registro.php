@@ -11,38 +11,41 @@ include("layouts/header.php");
 
 <header>
 
-<nav class="menuNav">
-    <div class="icon">
-        <a class="navbar-logo" href="#">
-            <img src="<?php print HTTP; ?>vista/res/HostApp.png">
-        </a>
-    </div>
-</nav>
+    <nav class="menuNav">
+        <div class="icon">
+            <a class="navbar-logo" href="#">
+                <img src="<?php print HTTP; ?>vista/res/HostApp.png">
+            </a>
+        </div>
+    </nav>
 
 </header>
+<div class="divErrores">
+            <?php if (!empty($resExiste)) { ?>
+                <!--en caso de no encontrar usuario-->
+                <h3 class="aviso"><?php echo $resExiste; ?></h3>
+                <br><br>
 
+            <?php } ?>
+        </div>
 <div class="wraper_form">
     <aside class="">
-        <?php if (!empty($resExiste)) { ?>
-            <!--en caso de no encontrar usuario-->
-            <h3 class="aviso"><?php echo $resExiste; ?></h3>
-            <br><br>
 
-        <?php } ?>
+
         <h2>Registrate:</h2><br>
 
 
         <form class="formRegistrate" action="" method="post">
             <label class="fieldsForm ">*Nombre:</label>
-            <input class="fieldsForm " name="nombre" type="text " required />
+            <input class="fieldsForm " name="nombre" type="text " maxlength="50" required />
             <label class="fieldsForm ">*Apellido:</label>
-            <input class="fieldsForm " name="apellido" type="text " required />
+            <input class="fieldsForm " name="apellido" type="text " maxlength="50" required />
             <label class="fieldsForm ">*Dni:</label>
-            <input class="fieldsForm " name="dni" type="text " maxlength="10" required />
+            <input class="fieldsForm " name="dni" type="text " maxlength="10" required  placeholder="53380908-R"/>
             <label class="fieldsForm ">*Correo electrónico:</label>
-            <input class="fieldsForm " name="email" type="email" required />
+            <input class="fieldsForm " name="email" type="text" maxlength="30" required />
             <label class="fieldsForm ">*Contraseña:</label>
-            <input class="fieldsForm " name="password" type="password" required />
+            <input class="fieldsForm " name="password" type="password" maxlength="30" required />
             <div>
                 <input class="fieldsForm " id="aceptar" type="checkbox" name="aceptarPoliticas" required />
                 <label for="aceptar" class="fieldsForm ">*Acepta nuestra politica de privacidad</label>
