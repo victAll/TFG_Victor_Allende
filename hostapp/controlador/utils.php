@@ -1,12 +1,18 @@
-<?php function format_decimal($valor)
+<?php 
+/**
+ * formatea valores en decimal
+ */
+function format_decimal($valor)
 {
         $float_redondeado = round($valor * 100) / 100;
         return $float_redondeado;
 }
 
-/*https://fernando-gaitan.com.ar/aprendiendo-php-parte-18-validar-formularios/*/
+/*https://fernando-gaitan.com.ar/aprendiendo-php-parte-18-validar-formularios/
+  Valida el campo email
+*/
 function validaEmail($valor)
-{
+{       //FILTER_VALIDATE_EMAIL Constatnte de PHp
         if (filter_var($valor, FILTER_VALIDATE_EMAIL) === FALSE) {
                 return false;
         } else {
@@ -14,7 +20,9 @@ function validaEmail($valor)
         }
 }
 
-/**https://es.stackoverflow.com/questions/453683
+/*
+Valida caracteres en texto
+*https://es.stackoverflow.com/questions/453683
  *
  / = Delimitador de la expresión regular, define el inicio y el fin.
 [] = Definición de una clase, el carácter puede ser cualquiera de los valores que se encuentran definidos dentro de la clase.
@@ -33,6 +41,9 @@ function isValidText($text)
         return preg_match($pattern, trim($text));
 }
 
+/**
+ * Vañida password vacío o longitud < 4
+ */
 function isValidPass($password)
 {       $valid = true;
         if(!isset($password)  || strlen($password) < 4){
@@ -90,13 +101,4 @@ function validateRegistro($nombre, $apellido, $dni, $correo, $password)
         return $errores;
 }
 
-/*function validateLogin($dni,$password){
-        $errores = "";
-        if (!validateDni($dni)) {
-                $errores = $errores . " DNI incorrecto utilice formato: 00000000-X  <br>";
-        }        
-        if (!isValidPass($password)) {
-                $errores = $errores . " Password incorrecto  <br>";
-        }
-        return $errores;
-}*/
+

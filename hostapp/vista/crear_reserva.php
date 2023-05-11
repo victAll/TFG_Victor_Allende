@@ -88,10 +88,6 @@ include("layouts/header.php");
 
                     ?>
         </select>
-        <!-- <input class="" type="hidden" name="id_menu" value="<?php //echo $v['id_menu']; 
-                                                                            ?>" /><br>-->
-
-
         <?php
 
         } ?>

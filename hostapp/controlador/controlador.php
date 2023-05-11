@@ -36,7 +36,6 @@ class ModeloController
         $volver = new Modelo();
         $usuario = $volver->mostrar('usuarios', "*", $data);
         $menu = $volver->mostrar(" menu ", " * ", 1);
-
         if ($redireccion == 'reserva') {
             require_once("vista/bienvenida.php");
         } else {
@@ -45,7 +44,7 @@ class ModeloController
     }
 
     /**
-     *valida el login corercto del usuario
+     *valida el login correcto del usuario
      *devuelve mensaje en caso de no encontrarse el ususario registrado 
      */
     static function validar_login()
@@ -77,6 +76,8 @@ class ModeloController
         }
     }
 
+	/*redirige a vista registro
+	*/
     function registro()
     {
         require_once("vista/registro.php");
@@ -107,7 +108,6 @@ class ModeloController
         $registrar = new Modelo();
 
         $errores = validateRegistro($nombre,$apellido,$dni,$correo, $password);
-        
 
         // Si han habido errores se muestran
         if (isset($errores)) {
@@ -300,7 +300,9 @@ class ModeloController
 
 
 
-
+	/**
+     * Inserta un registro de menu
+     */
     function insertar_menu()
     {
         $id_admin = $_POST['id_menu_usuario'];
@@ -323,6 +325,9 @@ class ModeloController
         require_once("vista/mostrar_menu.php");
     }
 
+	/**
+     * Redirige a formulario de edición de menú
+     */
     function editar_menu()
     {
         $id_menu = $_GET['id'];
@@ -333,7 +338,9 @@ class ModeloController
         require_once("vista/actualizar_menu.php");
     }
 
-
+	/**
+     * Actualiza un registro de menú
+     */
     function actualizar_menu()
     {
         $id = $_GET['id'];
@@ -357,7 +364,7 @@ class ModeloController
     }
 
     /**
-     * envia a la pagina de logout con el ususario que quiere cerrar sesión
+     * envia a la pagina de logout con el usuario que cierra sesión
      */
     static function salir()
     {
@@ -369,7 +376,7 @@ class ModeloController
     }
 
     /**
-     * Envia a vsta de despedida 
+     * Redirige a la vista de despedida 
      */
     static function cerrar()
     {

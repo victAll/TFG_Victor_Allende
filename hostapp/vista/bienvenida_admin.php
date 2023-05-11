@@ -31,12 +31,7 @@ if (!empty($usuario)) { ?>
                         <a id="submit_a" href="index.php?opcion=nueva_transaccion&redireccion=menu" class="btn">Crear Menu</a>
                         <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=menu&id_admin=<?php echo $v['id']; ?>" class="btn">Ver Menu</a>
                         <a id="submit_a" href="index.php?opcion=mostrar_listas&redireccion=reservas_admin&id_admin=<?php echo $v['id']; ?>" class="btn">Reservas</a>
-                        <!--<a id="submit_a" href="index.php?opcion=salir" class="btn">Cerrar sesión</a>-->
-                        <!--<div>
-                <?php /*echo $v['nombre'] . " ";
-                echo $v['apellido'] . " ";
-                echo $_SESSION['dni']; */ ?>
-            </div>-->
+                       
                         <ul id="submit_a" class="btn">
                             <li class="dropdown-li">
                                 Opciones

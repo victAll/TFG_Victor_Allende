@@ -68,14 +68,10 @@
             }
         } ?>
 
-
         <input id="submit" class="btn" type="submit" name="btn" value="Modificar">
         <input id="submit" type="hidden" name="opcion" value="actualizar_reserva">
     </form>
 </div>
-<!--<div class="wraper_modificar">
-    <td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $_SESSION['dni']; ?>" class="btn">Volver</a></td>
-</div>-->
 
 
 <?php
