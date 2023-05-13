@@ -1,0 +1,38 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>index.php</help_text><element><id>UMLClass</id><coordinates><x>470</x><y>80</y><w>220</w><h>210</h></coordinates><panel_attributes>Folder::controlador
+class ModeloController
+--
+$model: modelo de base de datos
+
+--
+-Valida datos y envia petición
+ al modelo para comprobar 
+usuario correcto
+-INICIA SESION si usuario valido
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>340</y><w>170</w><h>120</h></coordinates><panel_attributes>Folder:vista
+
+--
+Envia datos del usuario
+ que solicita login
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>150</y><w>30</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;190</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>200</y><w>210</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>190;130;190;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>230</y><w>150</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;10;130;100</additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>250</y><w>150</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;90;10;10;130;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>80</y><w>210</w><h>80</h></coordinates><panel_attributes>index.php
+--
+Recibe la solicitud de login
+ y envia datos al metodo del
+ controlador</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>120</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>830</x><y>80</y><w>190</w><h>80</h></coordinates><panel_attributes>Folder::controlador
+	utils.php
+--
+Utilidadess de validaciones PHP</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>90</y><w>170</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;120;10;120;60;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>150</y><w>270</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;40;250;40;250;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>330</y><w>200</w><h>160</h></coordinates><panel_attributes>Folder::modelo
+class Modelo
+--
+Verifica usuario,
+ devuelve registro si el 
+usuario existe o vacío en
+ caso contrario</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>540</y><w>170</w><h>120</h></coordinates><panel_attributes>Folder:vista
+despedida.php
+--
+hace session destroy
+ y envia login.php</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>540</y><w>170</w><h>120</h></coordinates><panel_attributes>Folder:vista
+logout.php
+--
+-Prepara cierre de sesion
+-Ofrece posibilidad de
+continuar con sesión</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>420</y><w>70</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>50;120;50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>450</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>620</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>370</y><w>260</w><h>190</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;240;10;240;170</additional_attributes></element><element><id>UMLActor</id><coordinates><x>80</x><y>350</y><w>60</w><h>110</h></coordinates><panel_attributes>Usuario</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>390</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element></diagram>

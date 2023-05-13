@@ -3,6 +3,7 @@ require_once("modelo/modelo.php");
 require_once("modelo/session.php");
 require_once("utils.php");
 
+
 class ModeloController
 {
     private $model;
@@ -21,7 +22,6 @@ class ModeloController
             require_once("vista/login.php");
         } catch (PDOException $err) {
             return "Error al conectar con base de datos: " . $err;
-            echo $err;
         }
     }
 
@@ -67,9 +67,11 @@ class ModeloController
             foreach ($usuario as $key => $value) :
                 foreach ($value as $v) :
                     if ($v['tipo_usuario']  == 'n') {
+                        require_once("modelo/session.php");
                         require_once("vista/bienvenida.php");
                     } else {
                         require_once("vista/bienvenida_admin.php");
+                        require_once("modelo/session.php");
                     }
                 endforeach;
             endforeach;
@@ -91,6 +93,8 @@ class ModeloController
 
     /**
      * Registramos un nuevo cliente
+     * Encfriptación MD5 
+     * https://blog.infranetworking.com/encriptar-con-md5-php/
      */
     function alta_cliente()
     {
@@ -123,6 +127,7 @@ class ModeloController
                 $registrar->insertar(" usuarios ", $campos, $data);
                 $usuario = $registrar->mostrar("usuarios", "*", "dni='" . $dni."'");
                 $menu = $registrar->mostrar("menu", "*", 1);
+                require_once("modelo/session.php");
                 require_once("vista/bienvenida.php");
             }
         }
@@ -140,9 +145,9 @@ class ModeloController
         $reservar = new Modelo();
         $usuario = $reservar->mostrar('usuarios', "*", $data);
         $menu = $reservar->mostrar('menu', "*", 1);
-        if ($redireccion == 'reserva') {
+        if ($redireccion == 'reserva') { //usuarios tipo 'n'
             require_once("vista/crear_reserva.php");
-        } else {
+        } else { //usuarios admin o tipo 'a'
             require_once("vista/crear_menu.php");
         }
     }

@@ -1,0 +1,38 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>index.php</help_text><element><id>UMLClass</id><coordinates><x>320</x><y>60</y><w>260</w><h>210</h></coordinates><panel_attributes>Folder::controlador
+class ModeloController
+--
+$model: modelo de base de datos
+
+--
+-Funciones y metodos invocados 
+desde la vista -Verifica y procesa
+ datos recibidos en las solicitudes
+ Get o Post
+-Retorna resultados obgtenidos
+ a partir de llamadas a la capa de 
+modelo alimentando a cada vista 
+según se solicite</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>300</y><w>250</w><h>160</h></coordinates><panel_attributes>Folder::modelo
+class Modelo
+--
+Encargado de atender las
+ peticiones del controlador,
+ interactuar con  la capa de 
+modelo de datos, realizar CRUD, 
+retornar listas o resultados 
+atómincos según se le solicite.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>320</y><w>300</w><h>140</h></coordinates><panel_attributes>Folder:vista
+
+--
+las vistas recogen datos y los envian
+ a procesar invocan llamadas 
+get o post al index.php que
+ es el encargado de verificar la  llamada y
+ hacerla llegar al controlador
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>140</y><w>30</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>180</y><w>160</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;130;140;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>210</y><w>110</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;10;90;90</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>260</y><w>120</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10;100;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>70</y><w>210</w><h>80</h></coordinates><panel_attributes>index.php
+--
+valida y administra las peticiones
+Get o Post desde la vista hacia
+el controlador</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>110</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>680</x><y>60</y><w>190</w><h>80</h></coordinates><panel_attributes>Folder::controlador
+	utils.php
+--
+Utilidadess de validaciones PHP</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>70</y><w>140</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>120;10;90;10;90;60;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>130</y><w>230</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;40;210;40;210;10</additional_attributes></element></diagram>

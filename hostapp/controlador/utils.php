@@ -12,7 +12,7 @@ function format_decimal($valor)
   Valida el campo email
 */
 function validaEmail($valor)
-{       //FILTER_VALIDATE_EMAIL Constatnte de PHp
+{       //FILTER_VALIDATE_EMAIL Constante de PHP
         if (filter_var($valor, FILTER_VALIDATE_EMAIL) === FALSE) {
                 return false;
         } else {
@@ -32,8 +32,7 @@ A-Z = Rango de letras desde la A hasta la Z, lo mismo que antes pero en mayuscul
 ñáéíóúÁÉÍÓÚ = caracteres que no están incluidos en a-z y A-Z, para que la expresión coincida cuando estén estos caracteres.
 ^ = Define que la expresión debe aplicar desde el comienzo de la cadena
 $ = Define que la expresión debe aplicar hasta el final de la cadena
-+ = repetirá la clase de caracteres para buscar coincidencias UNA o más veces, si quieres considerar cadenas vacías como validas puedes cambiar el + por un *.
-{5,} requiere de una cadena de al menos 5 caracteres
+{4,} requiere de una cadena de al menos 4 caracteres
  */
 function isValidText($text)
 {
@@ -42,7 +41,7 @@ function isValidText($text)
 }
 
 /**
- * Vañida password vacío o longitud < 4
+ * Valida password vacío o longitud < 4
  */
 function isValidPass($password)
 {       $valid = true;

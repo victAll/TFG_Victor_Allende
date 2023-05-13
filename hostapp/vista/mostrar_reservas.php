@@ -65,8 +65,6 @@ require_once("controlador/utils.php");
 
                 <h2><?php echo @$_SESSION['nombre']; ?> <?php echo @$_SESSION['apellido']; ?></h2>
                 <br>
-                <!--<a href="index.php/?opcion=nueva_transaccion&redireccion=reserva" class="btn">Reservar</a>
-            <td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $_SESSION['dni']; ?>&redireccion=reserva" class="btn">Volver</a></td>-->
                 <br>
                 <?php
                 } ?>
