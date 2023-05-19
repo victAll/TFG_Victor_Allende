@@ -48,6 +48,12 @@ include("layouts/header.php");
 </header>
 
 <div class="wraper_form">
+<?php if (isset($resVacia)) { ?>
+        <!--en caso de no encontrar usuario-->
+        <h3 class="aviso"><?php echo $resVacia; ?></h3>
+        <br><br>
+
+    <?php } ?>
     <h1 class="text_center">Haz tu reserva!</h1>
     <form class="formLogin mb-3" name="crear_reserva_form" method="post">
         <?php
@@ -59,15 +65,15 @@ include("layouts/header.php");
         
         <input class="" type="hidden" name="id_res" value="<?php echo $v['id']; ?>" /><br>
         <input class="" type="hidden" name="dni" value="<?php echo $v['dni']; ?>" /><br>
-        <input class="" type="hidden" name="menu_email_usuario" value="<?php echo $v['email']; ?>" /><br>
+        <input class="" type="hidden" name="menu_email_usuario" value="<?php echo $v['email']; ?>" ><br>
         <label class="fieldsForm" for="">Nombre reserva:</label> <br>
-        <input class="fieldsForm" type="text" name="nombre_res" value="<?php echo $v['nombre']; ?>" /><br>
+        <input class="fieldsForm" type="text" name="nombre_res" value="<?php echo $v['nombre']; ?>" maxlength="50" required /><br>
         <label class="fieldsForm" for="">Apellido reserva:</label> <br>
-        <input class="fieldsForm" type="text" name="apellido_res" value="<?php echo $v['apellido']; ?>" /><br>
+        <input class="fieldsForm" type="text" name="apellido_res" value="<?php echo $v['apellido']; ?>" maxlength="50" required/><br>
         <label class="fieldsForm" for="">Dni titular:</label> <br>
         <input class="fieldsForm" type="text" name="dni_res" value="<?php echo $v['dni']; ?>" readonly /><br>
         <label class="fieldsForm" for="">Email reserva:</label><br>
-        <input class="fieldsForm" type="email" name="menu_email_res" value="<?php echo $v['email']; ?>" /><br>
+        <input class="fieldsForm" type="text" name="menu_email_res" value="<?php echo $v['email']; ?>" maxlength="30" required/><br>
         <?php
                     endforeach;
                 endforeach;

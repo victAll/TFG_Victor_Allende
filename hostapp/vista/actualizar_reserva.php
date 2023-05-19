@@ -46,7 +46,12 @@
 </header>
 
 <h1>Modifica tu reserva</h1>
+<?php if (isset($resVacia)) { ?>
+        <!--en caso de no encontrar usuario-->
+        <h3 class="aviso"><?php echo $resVacia; ?></h3>
+        <br><br>
 
+    <?php } ?>
 <div class="wraper_modificar">
     <form class="formLoginModificar" action="" method="get">
         <?php
@@ -57,12 +62,12 @@
         <input type="hidden" value="<?php echo $valor['dni_usuario']; ?>" name="dni_usuario"></input>
         <input type="hidden" value="<?php echo $id; ?>" name="id_usuario"></input>
         <label class="fieldsForm ">Nombre:</label>
-        <input class="fieldsForm" type="text" value="<?php echo $valor['nombre']; ?>" name="nombre"></input>
+        <input class="fieldsForm" type="text" value="<?php echo $valor['nombre']; ?>" name="nombre" maxlength="50" required></input>
         <label class="fieldsForm ">Email:</label>
-        <input class="fieldsForm" type="email" value="<?php echo $valor['email_usuario']; ?>" name="email_usuario"></input>
+        <input class="fieldsForm" type="email" value="<?php echo $valor['email_usuario']; ?>" name="email_usuario" maxlength="30" required></input>
         <label class="fieldsForm ">Fecha:</label>
         <input class="fieldsForm" type="date" value="<?php echo $valor['fecha_reserva']; ?>"
-            name="fecha_reserva"></input>
+            name="fecha_reserva" required></input>
 
         <?php endforeach;
             }

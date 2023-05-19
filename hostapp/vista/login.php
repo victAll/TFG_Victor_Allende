@@ -16,8 +16,6 @@ include("layouts/header.php");
 
 </header>
 <div class="wraper_form">
-
-
     <?php if (isset($resVacia)) { ?>
         <!--en caso de no encontrar usuario-->
         <h3 class="aviso"><?php echo $resVacia; ?></h3>
@@ -43,7 +41,6 @@ include("layouts/header.php");
             $_SESSION['password'] = $_POST['password'];
         }
         ?>
-
     </form>
 
     <form action="" class=" formLogin" method="get">

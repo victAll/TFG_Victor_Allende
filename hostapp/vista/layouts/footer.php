@@ -15,11 +15,11 @@
             <br>
             <p>Buscanos en www.hostapp.es ó en:</p>
             <br>
-            <a class="footer-logo" href="#">
+            <a class="footer-icon" href="#">
                 <img src="<?php print HTTP; ?>vista/res/facebook.svg"><p> Facebook </p> 
             </a>
             <br>
-            <a class="footer-logo" href="#">
+            <a class="footer-icon" href="#">
                 <img src="<?php print HTTP; ?>vista/res/linkedin.svg"><p> Linkedin</p> 
             </a>
         </div>
@@ -28,17 +28,17 @@
             <br>
             <p>Para cualquier ayuda que necesite pongase en contacto con nosotros.</p>
             <br>
-            <a class="footer-logo" href="#">
+            <a class="footer-icon" href="#">
                 <img src="<?php print HTTP; ?>vista/res/at.svg">
                 <p>www.hostapp.com</p>
             </a>
             <br>
-            <a class="footer-logo" href="#">
+            <a class="footer-icon" href="#">
                 <img src="<?php print HTTP; ?>vista/res/telephone-inbound.svg">
-                <p>900100100</p>
+                <p> 900100100</p>
             </a>
             <br>
-            <a class="footer-logo" href="#">
+            <a class="footer-icon" href="#">
             <img src="<?php print HTTP; ?>vista/res/envelope.svg"><p>   hostapp</p><img src="<?php print HTTP; ?>vista/res/at.svg">
                 <p>hostapp.com</p>
             </a>
@@ -48,9 +48,9 @@
             <br>
             <p>Se prohibe la difusión de cualquier imagen o fotografía que se muestre en la web de HostApp </p>
             <br>
-            <p>Nuestro gestor hostapp tiene todos pos derechos reservados</p>
+            <p>Nuestro gestor HostApp tiene todos pos derechos reservados</p>
             <br>
-            <p>&copy; Copyright 2023 hostapp</p>
+            <p>&copy; Copyright 2023 HostApp</p>
         </div>
     </div>
 </footer>

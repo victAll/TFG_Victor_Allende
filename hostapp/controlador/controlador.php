@@ -78,7 +78,7 @@ class ModeloController
         }
     }
 
-	/*redirige a vista registro
+    /*redirige a vista registro
 	*/
     function registro()
     {
@@ -111,7 +111,7 @@ class ModeloController
 
         $registrar = new Modelo();
 
-        $errores = validateRegistro($nombre,$apellido,$dni,$correo, $password);
+        $errores = validateRegistro($nombre, $apellido, $dni, $correo, $password);
 
         // Si han habido errores se muestran
         if (isset($errores)) {
@@ -119,13 +119,14 @@ class ModeloController
             require_once("vista/registro.php");
         } else {
             //validar si el usuario existe antes de registrar
-            $usuario = $registrar->mostrar("usuarios", "*", " dni='" . $dni."'");
+            $usuario = $registrar->mostrar("usuarios", "*", " dni='" . $dni . "'");
             if ($usuario != null) {
-                $resExiste = "El usuario con dni: " . $dni . " ya está registrado, inténtalo nuevamente...";require_once("vista/registro.php");
+                $resExiste = "El usuario con dni: " . $dni . " ya está registrado, inténtalo nuevamente...";
+                require_once("vista/registro.php");
             } else {
 
                 $registrar->insertar(" usuarios ", $campos, $data);
-                $usuario = $registrar->mostrar("usuarios", "*", "dni='" . $dni."'");
+                $usuario = $registrar->mostrar("usuarios", "*", "dni='" . $dni . "'");
                 $menu = $registrar->mostrar("menu", "*", 1);
                 require_once("modelo/session.php");
                 require_once("vista/bienvenida.php");
@@ -206,19 +207,32 @@ class ModeloController
 
         $menu_email_res = $_POST['menu_email_res'];
         $dni = $_SESSION['dni'];
-        $campos = " (id_usuario ,dni_usuario, id_menu, nombre, fecha_reserva, email_usuario) ";
 
-        $data = $id_usuario . ", '" . $dni_usuario . "' ,'" . $id_menu . "','" . $nombre . "', '" . $fecha_reserva . "', '" . $menu_email_res . "'";
+
+        $errores = validateReserva($_POST['nombre_res'], $_POST['apellido_res'], $menu_email_res);
         $reserva = new Modelo();
+        // Si han habido errores se muestran
+        if (isset($errores)) {
+            $resVacia = $errores; // pasamos los errores de falla de formulario a la vista
+            $data = " dni= '" . $dni_usuario . "'";
+            $usuario = $reserva->mostrar('usuarios', "*", $data);
+            $menu = $reserva->mostrar('menu', "*", 1);
+            require_once("vista/crear_reserva.php");
+        } else {
+            $campos = " (id_usuario ,dni_usuario, id_menu, nombre, fecha_reserva, email_usuario) ";
 
-        $reserva->insertar(" reservas ", $campos, $data);
+            $data = $id_usuario . ", '" . $dni_usuario . "' ,'" . $id_menu . "','" . $nombre . "', '" . $fecha_reserva . "', '" . $menu_email_res . "'";
 
-        //volvemos a mostrar reservas una vez hecha la reserva
-        $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
-        $dato = $reserva->mostrar_reservas_usuario($id_usuario);
 
-        $usuario = $reserva->mostrar("usuarios ", "*", " id = '" . $id_usuario . "'");
-        require_once("vista/mostrar_reservas.php");
+            $reserva->insertar(" reservas ", $campos, $data);
+
+            //volvemos a mostrar reservas una vez hecha la reserva
+            $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
+            $dato = $reserva->mostrar_reservas_usuario($id_usuario);
+
+            $usuario = $reserva->mostrar("usuarios ", "*", " id = '" . $id_usuario . "'");
+            require_once("vista/mostrar_reservas.php");
+        }
     }
 
 
@@ -251,17 +265,26 @@ class ModeloController
 
         $update = new Modelo();
 
-        $data = array("nombre" => $nombre, "fecha_reserva" => $fecha, "email_usuario" => $email_usuario);
+        $errores = validateUpdateReserva($nombre, $email_usuario);
+        // Si han habido errores se muestran
+        if (isset($errores)) {
+            $resVacia = $errores; // pasamos los errores de falla de formulario a la vista
+            $reservaEditar = $update->mostrar(" reservas ", "*", "id = " . $id);
+            $usuario = $update->mostrar("usuarios ", "* ", " dni = '" . $dni . "'");
+            require_once("vista/actualizar_reserva.php");
+        } else {
+            $data = array("nombre" => $nombre, "fecha_reserva" => $fecha, "email_usuario" => $email_usuario);
 
-        $update->actualizar(" reservas ", $data, $condicion);
+            $update->actualizar(" reservas ", $data, $condicion);
 
-        //volvemos a mostrar reservas una vez hecha la reserva
-        $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
-        // $dato = $update->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
-        $dato = $update->mostrar_reservas_usuario($id_usuario);
+            //volvemos a mostrar reservas una vez hecha la reserva
+            $campos = " id,nombre, dni_usuario, DATE_FORMAT(fecha_reserva,'%d-%m-%Y') AS fecha_reserva, email_usuario ";
+            // $dato = $update->mostrar("reservas ", $campos, " dni_usuario = '" . $dni . "'");
+            $dato = $update->mostrar_reservas_usuario($id_usuario);
 
-        $usuario = $update->mostrar("usuarios ", "* ", " dni = '" . $dni . "'");
-        require_once("vista/mostrar_reservas.php");
+            $usuario = $update->mostrar("usuarios ", "* ", " dni = '" . $dni . "'");
+            require_once("vista/mostrar_reservas.php");
+        }
     }
     /**
      * Elimina un registro de una tabla dada
@@ -305,7 +328,7 @@ class ModeloController
 
 
 
-	/**
+    /**
      * Inserta un registro de menu
      */
     function insertar_menu()
@@ -316,21 +339,32 @@ class ModeloController
         $entrante = $_POST['entrante_menu'];
         $principal = $_POST['principal_menu'];
         $precio = $_POST['precio_menu'];
-
         $camposMenu = " (id_admin ,nombre_menu, entrante, plato_principal, precio) ";
         $data = $id_admin . ", '" . $nombre_menu . "' ,'" . $entrante . "', '" . $principal . "', '" . $precio . "'";
         $menu = new Modelo();
 
-        $menu->insertar(" menu ", $camposMenu, $data);
+        $errores = validateMenu($nombre_menu, $entrante, $principal, $precio);
+        // Si han habido errores se muestran
+        if (isset($errores)) {
+            $resVacia = $errores; // pasamos los errores de falla de formulario a la vista
+            $data = " dni= '" . $dni_admin . "'";
+            $usuario = $menu->mostrar('usuarios', "*", $data);
+            require_once("vista/crear_menu.php");
+        } else {
+            $menu->insertar(" menu ", $camposMenu, $data);
 
-        //volvemos a mostrar reservas una vez hecha la reserva
-        $menus = $menu->mostrar(" menu ", " * ", " id_admin = '" . $id_admin . "'");
-        $creador = $menu->mostrar(" usuarios ", " * ", "dni = '" . $dni_admin . "'");
+            //volvemos a mostrar reservas una vez hecha la reserva
+            $menus = $menu->mostrar(" menu ", " * ", " id_admin = '" . $id_admin . "'");
+            $creador = $menu->mostrar(" usuarios ", " * ", "dni = '" . $dni_admin . "'");
+    
+            require_once("vista/mostrar_menu.php");
+        }
 
-        require_once("vista/mostrar_menu.php");
+
+
     }
 
-	/**
+    /**
      * Redirige a formulario de edición de menú
      */
     function editar_menu()
@@ -343,7 +377,7 @@ class ModeloController
         require_once("vista/actualizar_menu.php");
     }
 
-	/**
+    /**
      * Actualiza un registro de menú
      */
     function actualizar_menu()
@@ -359,13 +393,23 @@ class ModeloController
 
         $update = new Modelo();
 
-        $data = array("nombre_menu" => $nombre_menu, "entrante" => $entrante, "plato_principal" => $plato_principal, "precio" => $precio);
+        $errores = validateMenu($nombre_menu, $entrante, $plato_principal, $precio);
 
-        $update->actualizar(" menu ", $data, $condicion);
-        //volvemos a mostrar menu una vez hecha la reserva
-        $menus = $update->mostrar(" menu ", " * ", " id_admin = '" . $id_admin . "'");
-        $creador = $update->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
-        require_once("vista/mostrar_menu.php");
+        // Si han habido errores se muestran
+        if (isset($errores)) {
+            $resVacia = $errores; // pasamos los errores de falla de formulario a la vista
+            $menuEditar = $update->mostrar(" menu ", "*", "id = " . $id);
+            $creador = $update->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
+            require_once("vista/actualizar_menu.php");
+        } else {
+            $data = array("nombre_menu" => $nombre_menu, "entrante" => $entrante, "plato_principal" => $plato_principal, "precio" => $precio);
+
+            $update->actualizar(" menu ", $data, $condicion);
+            //volvemos a mostrar menu una vez hecha la reserva
+            $menus = $update->mostrar(" menu ", " * ", " id_admin = '" . $id_admin . "'");
+            $creador = $update->mostrar(" usuarios ", " * ", "id = '" . $id_admin . "'");
+            require_once("vista/mostrar_menu.php");
+        }
     }
 
     /**

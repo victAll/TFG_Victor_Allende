@@ -1,0 +1,91 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text>index.php</help_text><element><id>UMLClass</id><coordinates><x>347</x><y>54</y><w>504</w><h>315</h></coordinates><panel_attributes>Folder::controlador
+class ModeloController
+--
+$model: modelo de base de datos
+
+--
+function index():	mostrar inicio
+function volver():	Regresa a la vista de bienvenida
+function validar_login():	login corercto del usuario
+function registro():	redirige a vista registro
+function alta_cliente():	Registramos un nuevo cliente
+function nueva_transaccion():	Reservar muestra html de formulario para crear reservas o menu
+function mostrar_listas():	Recupera el listado de reservas y las envia a la vista por usuario logeado
+function insertar_reserva():	Inserta un registro de una nueva reserva
+function editar_reserva():	Envia a la vista de actualizar o modificar reserva
+function actualizar_reserva():	Actualizar la reserva
+function eliminar():	Elimina un registro de una tabla dada
+function insertar_menu():	Inserta un registro de menu
+function editar_menu():	Redirige a formulario de edición de menú
+function actualizar_menu():	Actualiza un registro de menú
+function salir():	envia a la pagina de logout con el usuario que cierra sesión
+function cerrar():	Redirige a la vista de despedida</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>716</x><y>396</y><w>441</w><h>171</h></coordinates><panel_attributes>Folder::modelo
+class Modelo
+--
+$db:base de datos
+$datos[]: retorna información al controlador
+--
+function __construct(): constructor de la clase
+function insertar($tabla, $campos,$data):Inserción genérica a toda la app
+function mostrar($tabla, $campos, $condicion):Recupera cualquier registro de cualquier tabla
+function actualizar($tabla, $data, $condicion):Función genérica de actualizacion - update
+function eliminar($tabla, $condicion):Funcion generica, elimina cualquier registro de la tabla dada
+function mostrar_reservas_admin():Retorna las reservas a los administradores
+function mostrar_reservas_usuario($id):Retorna las reservas a los usuarios</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>59</x><y>396</y><w>369</w><h>216</h></coordinates><panel_attributes>Folder:vista
+
+--
+actualizar_menu.php=&gt;Vista de administrador de la aplicación
+actualizar_reserva.php=&gt;Vista de usuario de la aplicación
+bienvenida_admin.php=&gt;Vista de administrador de la aplicación
+bienvenida.php=&gt;Vista de todos los usuarios de la aplicación
+crear_menu.php=&gt;Vista de administrador de la aplicación
+crear_reserva.php=&gt;Vista de usuario de la aplicación
+despedida.php=&gt;Vista de todos los usuarios de la aplicación
+login.php=&gt;Vista de todos los usuarios de la aplicación
+logout.php=&gt;Vista de todos los usuarios de la aplicación
+mostrar_menu.php=&gt;Vista de administrador de la aplicación
+mostrar_reservas_admin.php=&gt;Vista de administrador de la aplicación
+mostrar_reservas.php=&gt;Vista de usuario de la aplicación
+registro.php=&gt;Vista de todos los usuarios de la aplicación
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>113</x><y>189</y><w>27</w><h>225</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>842</x><y>162</y><w>252</w><h>252</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>260;260;260;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>842</x><y>252</y><w>189</w><h>162</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;190;10;190;160</additional_attributes></element><element><id>Relation</id><coordinates><x>203</x><y>234</y><w>162</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;180;10;10;160;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>41</x><y>126</y><w>189</w><h>72</h></coordinates><panel_attributes>index.php
+--
+valida y administra las peticiones
+Get o Post desde la vista hacia
+el controlador</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>221</x><y>162</y><w>144</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>23</x><y>252</y><w>108</w><h>126</h></coordinates><panel_attributes>vistas:
+Envían
+variables o datos
+por peticiones 
+Get y Post 
+al controlador
+que son 
+tratatas por
+index.php</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>221</x><y>261</y><w>117</w><h>108</h></coordinates><panel_attributes>controlador:
+-Devuelve resultados
+y redirige a una vista
+enviandole los 
+resultados de la
+llamada recibida</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>869</x><y>171</y><w>189</w><h>72</h></coordinates><panel_attributes>controlador
+-Verifica datos recibidos
+-Llama a la capa de modelo
+-Parametriza las llamadas a la bbdd
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>860</x><y>279</y><w>162</w><h>117</h></coordinates><panel_attributes>modelo
+-Ejecuta CRUD en la bbdd
+-Inserta,Devuelve registros
+o listas,  actualiza, elimina
+datos en la capa de 
+modelo de negocio o bbdd
+-Devuelve resultados 
+al controlador
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>905</x><y>9</y><w>333</w><h>108</h></coordinates><panel_attributes>Folder::controlador
+	utils.php
+--
+format_decimal($valor):formatea valores en decimal
+validaEmail($valor):Valida el campo email con Constante de PHP
+isValidText($text):Valida caracteres en texto
+isValidPass($password):Valida password vacío o longitud &lt; 4
+validateDni($dni):Funcion para validar el dni</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>842</x><y>27</y><w>81</w><h>117</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;60;10;60;110;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>842</x><y>108</y><w>243</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;50;250;50;250;10</additional_attributes></element><element><id>Text</id><coordinates><x>761</x><y>0</y><w>117</w><h>45</h></coordinates><panel_attributes>controlador:
+-invoca validaciones</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1085</x><y>117</y><w>225</w><h>63</h></coordinates><panel_attributes>utils.php:
+-devuelve resultados 
+de las validaciones
+ requeridas</panel_attributes><additional_attributes></additional_attributes></element></diagram>

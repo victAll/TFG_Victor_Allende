@@ -2,11 +2,11 @@
 /**
  * formatea valores en decimal
  */
-function format_decimal($valor)
+/*function format_decimal($valor)
 {
         $float_redondeado = round($valor * 100) / 100;
         return $float_redondeado;
-}
+}*/
 
 /*https://fernando-gaitan.com.ar/aprendiendo-php-parte-18-validar-formularios/
   Valida el campo email
@@ -43,7 +43,7 @@ function isValidText($text)
 /**
  * Valida password vacío o longitud < 4
  */
-function isValidPass($password)
+function isSetText($password)
 {       $valid = true;
         if(!isset($password)  || strlen($password) < 4){
                 $valid = false;
@@ -55,6 +55,8 @@ function isValidPass($password)
  * Funcion para validar el dni
  * Origen de información:
  * https://www.jose-aguilar.com/blog/validar-dni-php/
+ * Calcular modulo online
+ * https://miniwebtool.com/es/modulo-calculator/
  */
 function validateDni($dni)
 {
@@ -66,6 +68,8 @@ function validateDni($dni)
                 $letra = strtoupper($arNumLetras[1]); //nos quedamos con la letra del dni
                 //formula para encontrar la letra
                 //resto de los numeros del dni / 23 tiene que ser el numero de la letra final del dni
+                //EJEMPLO DE USO substr
+                //substr(string $string, int $offset, ?int $length):
                 if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros % 23, 1) == $letra) {
                         return true;
                 } else {
@@ -94,9 +98,59 @@ function validateRegistro($nombre, $apellido, $dni, $correo, $password)
         if (!validateDni($dni)) {
                 $errores = $errores . " DNI incorrecto utilice formato: 00000000-X <br>";
         }        
-        if (!isValidPass($password)) {
+        if (!isSetText($password)) {
                 $errores = $errores . " Password incorrecto mínimo 4 caracteres <br>";
         }
+        return $errores;
+}
+
+/**
+ * Funcion para validar una reserva
+ */
+function validateReserva($nombre, $apellido, $email){
+        $errores = null;
+        if (!validaEmail($email)) {
+                $errores = "Correo electrónico incorrecto <br>";
+        }
+        if (!isValidText($nombre)) {
+                $errores = $errores . " Nombre incorrecto  ";
+        }
+        if (!isValidText($apellido)) {
+                $errores = $errores . " Apellido incorrecto  <br>";
+        }
+        return $errores;
+}
+
+/**
+ * Funcion para validar una actualización reserva
+ */
+function validateUpdateReserva($nombre, $email){
+        $errores = null;
+        if (!validaEmail($email)) {
+                $errores = "Correo electrónico incorrecto <br>";
+        }
+        if (!isValidText($nombre)) {
+                $errores = $errores . " Nombre incorrecto  ";
+        }
+        
+        return $errores;
+}
+
+/**
+ * Funcion para validar una actualización reserva
+ */
+function validateMenu($nombre, $entrante, $principal, $precio){
+        $errores = null;
+        if (!isSetText($nombre)) {
+                $errores = $errores . " Nombre incorrecto  ";
+        }
+        if (!isSetText($entrante)) {
+                $errores = $errores . " Entrante incorrecto  ";
+        }
+        if (!isSetText($principal)) {
+                $errores = $errores . " Principal incorrecto  ";
+        }
+        
         return $errores;
 }
 

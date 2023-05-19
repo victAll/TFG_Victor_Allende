@@ -2,7 +2,7 @@
 
 require_once("modelo/session.php");
 include("layouts/header.php");
-require_once("controlador/utils.php");
+//require_once("controlador/utils.php");
 ?>
 
 
@@ -52,10 +52,8 @@ require_once("controlador/utils.php");
 
 </header>
 
-<section class="parallax" id="section1">
+<section class="seccion1" id="section1">
     <section class="wrap">
-
-
         <div class="contenedorReservas">
             <div class="muestraReservas">
                 <?php
@@ -96,8 +94,9 @@ require_once("controlador/utils.php");
                             <td><?php echo $valor['email_usuario']; ?></td>
                             <td><?php echo $valor['nombre_menu']; ?></td>
                             <td><?php echo $valor['entrante_menu']; ?></td>
-                            <td><?php echo $valor['principal_menu']; ?></td>
-                            <td><?php echo format_decimal($valor['precio_menu']); ?></td>
+                            <td><?php echo $valor['principal_menu']; ?></td>  
+                           <!-- <td><?php /*echo format_decimal($valor['precio_menu']);*/?></td>-->
+                            <td><?php echo $valor['precio_menu']; ?></td>
                             <td><a class="btn" href="index.php/?opcion=editar_reserva&id=<?php echo $valor['id']; ?>"
                                     class="btn btn-primary">Editar</a></td>
                             <td><a class="btn"

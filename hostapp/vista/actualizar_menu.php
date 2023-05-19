@@ -1,7 +1,7 @@
 <?php
    include("layouts/header.php");
    require_once("modelo/session.php");
-   require_once("controlador/utils.php");
+   //require_once("controlador/utils.php");
 
    
 ?>
@@ -54,6 +54,12 @@ if (!empty($creador)) { ?>
     </nav>
 
 </header>
+<?php if (isset($resVacia)) { ?>
+        <!--en caso de no encontrar usuario-->
+        <h3 class="aviso"><?php echo $resVacia; ?></h3>
+        <br><br>
+
+    <?php } ?>
 <h1>Modificar Menú</h1>
 
 <div class="wraper_reserva">
@@ -65,14 +71,17 @@ if (!empty($creador)) { ?>
         <input type="hidden" value="<?php echo $valor['id']; ?>" name="id"></input>
         <input type="hidden" value="<?php echo $valor['id_admin']; ?>" name="id_admin"></input>
         <label class="fieldsForm ">Nombre menú:</label>
-        <input class="fieldsForm" type="text" value="<?php echo $valor['nombre_menu']; ?>" name="nombre_menu"></input>
+        <input class="fieldsForm" type="text" value="<?php echo $valor['nombre_menu']; ?>" name="nombre_menu" maxlength="50" required></input>
         <label class="fieldsForm ">Entrante:</label>
-        <input class="fieldsForm" type="text" value="<?php echo $valor['entrante']; ?>" name="entrante"></input>
+        <input class="fieldsForm" type="text" value="<?php echo $valor['entrante']; ?>" name="entrante" maxlength="50" required></input>
         <label class="fieldsForm ">Plato principal:</label>
         <input class="fieldsForm" type="text" value="<?php echo $valor['plato_principal']; ?>"
-            name="plato_principal"></input>
+            name="plato_principal" maxlength="50" required></input>
         <label class="fieldsForm" for="">Precio €</label> <br>
-        <input class="fieldsForm" type="decimal" value="<?php echo format_decimal($valor['precio']); ?>" name="precio_menu" /><br>
+        <!--<input class="fieldsForm" type="number" value="<?php //echo format_decimal($valor['precio']); ?>" name="precio_menu" 
+        min="0.01" step="0.01" max="1000.00"required/><br>-->
+        <input class="fieldsForm" type="number" value="<?php echo $valor['precio']; ?>" name="precio_menu" 
+        min="0.01" step="0.01" max="1000.00" required/>
 
         <?php endforeach;
             }
@@ -81,12 +90,6 @@ if (!empty($creador)) { ?>
         <input id="submit" type="hidden" name="opcion" value="actualizar_menu">
     </form>
 </div>
-<!--<div class="wraper_modificar">
-    <td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $_SESSION['dni']; ?>&redireccion=menu"
-            class="btn">Volver</a></td>
-</div>-->
-
-
 <?php
 include("layouts/footer.php");
 ?>

@@ -52,6 +52,7 @@ html {
 .btn:hover {
     background-color: rgb(110, 148, 230);
     color: white;
+    font-weight: bold;
 }
 
 .main-nav a label {
@@ -66,14 +67,13 @@ html {
 
 /*
 Estilo para elemento body
+https://www.freecodecamp.org/espanol/news/html-vs-body-como-configurar-el-ancho-y-el-alto-para-el-tamano-de-la-pagina-completa/
 */
 
 body {
-    font-family: Verdana, Geneva, sans-serif;
-    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
     border-radius: 8px;
     color: rgb(46, 42, 42);
-    /*https://www.freecodecamp.org/espanol/news/html-vs-body-como-configurar-el-ancho-y-el-alto-para-el-tamano-de-la-pagina-completa/*/
     min-height: 100vh;
     max-width: 100%;
     margin: 0 auto;
@@ -126,22 +126,30 @@ header {
     font-size: 12px;
 }
 
-.footer-logo {
+
+/*
+*icono y link footer
+*/
+
+.footer-icon {
     display: flex;
     flex-direction: row;
     vertical-align: middle;
-    align-items: left;
     width: 15%;
     text-decoration: none;
 }
 
 
-/*https://www.html.am/html-codes/character-codes/html-copyright-code.cfm*/
+/*https://www.html.am/html-codes/character-codes/html-copyright-code.cfm
+    footer area de iconos y copyright
+    marcar copyright
+*/
 
-.footer-logo img {
+.footer-icon img {
     float: left;
     width: 100%;
     height: auto;
+    margin-right: 5px;
 }
 
 
@@ -203,6 +211,11 @@ section {
     margin: 1%;
 }
 
+
+/*
+     
+*/
+
 .section_controles {
     display: flex;
     flex-direction: row;
@@ -234,13 +247,14 @@ footer {
 }
 
 #submit_a {
-    font-weight: bold;
     cursor: pointer;
     padding: 5px;
     margin: 0 10px 20px 0;
     border: 1px solid #ccc;
-    background: 41, 243, 14;
+    background: rgb(154, 181, 241);
     border-radius: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 14px;
 }
 
 #submit:hover {
@@ -261,7 +275,9 @@ table {
 }
 
 
-/*https://www.aprenderaprogramar.com/*/
+/*Estilos de tablas using nth-child in tables tr td/
+https://stackoverflow.com/questions/43493583/tbody-element-breaking-nth-child-selector 
+*/
 
 thead tr td {
     background-color: rgb(202, 217, 235);
@@ -269,13 +285,15 @@ thead tr td {
 
 table tbody tr td:nth-child(odd) {
     background-color: rgb(225, 230, 245);
-    font-family: Verdana, Geneva, sans-serif;
+    font-family: Arial, Helvetica, Verdana;
+    ;
     font-size: 12px;
 }
 
 table tbody tr td:nth-child(even) {
     background-color: rgb(188, 229, 245);
-    font-family: Verdana, Geneva, sans-serif;
+    font-family: Arial, Helvetica, Verdana;
+    ;
     font-size: 12px;
 }
 
@@ -393,8 +411,6 @@ aside {
 .menuNav {
     display: flex;
     flex-direction: row;
-    /*flex-wrap: wrap;
-        justify-content: space-between;*/
     width: 100%;
     padding-left: 0;
     margin-bottom: 0;
@@ -418,14 +434,6 @@ aside {
     margin: 0 auto;
     background-image: linear-gradient(#a6eeeef8, #92b5f7);
 }
-
-
-/*.column-2.carta {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 1rem;
-        row-gap: 1rem;
-    }*/
 
 .column-2.carta {
     width: 80%;
@@ -459,7 +467,7 @@ aside {
 }
 
 .titulo_menu {
-    font-size: 20px;
+    font-size: 15px;
     text-decoration: underline;
 }
 
@@ -468,20 +476,15 @@ aside {
 Estilo e imagen para elemento con class seccion1
 */
 
-.parallax {
+.seccion1 {
     background: #fff fixed no-repeat 50% 50%;
     background-size: cover;
 }
 
-#section1 {
-    background-image: url('./vista/res/img_1.jpg');
-}
 
-
-/**Custom select https://www.antofernandez.com/personalizar-un-select-con-css/ */
-
-
-/* Eliminamos la fecha que por defecto aparece en el desplegable */
+/**Custom select https://www.antofernandez.com/personalizar-un-select-con-css/ 
+Eliminamos la fecha que por defecto aparece en el desplegable 
+*/
 
 .select {
     display: inline-block;
@@ -494,20 +497,6 @@ Estilo e imagen para elemento con class seccion1
     font-family: 'Quicksand', sans-serif;
     border-radius: 8px;
 }
-
-
-/*.selectFecha {
-        display: inline-block;
-        width: 93%;
-        cursor: pointer;
-        padding: 7px 10px;
-        height: 30px;
-        background: #f0f0f0;
-        color: #302b2b;
-        font-family: 'Quicksand', sans-serif;
-        border-radius: 8px;
-    
-}*/
 
 
 /*https://devxdev.net/tutoriales/menu-desplegable-html-css/*/
@@ -523,14 +512,14 @@ Estilo e imagen para elemento con class seccion1
 .dropdown-li:hover .dropdown {
     display: flex;
     flex-direction: column;
-    opacity: 1;
+    opacity: 5;
 }
 
 .dropdown {
-    width: 100%;
+    width: 90%;
     position: absolute;
     display: none;
-    background: rgb(34, 119, 231);
+    background: rgb(116, 172, 245);
 }
 
 .dropdown li {

@@ -4,7 +4,7 @@ if (session_status() !== 0) { //si es 1 es que no hay session
 
 }
 include("layouts/header.php");
-require_once("controlador/utils.php");
+//require_once("controlador/utils.php");
 
 ?>
 
@@ -56,7 +56,7 @@ if (!empty($usuario)) { ?>
     endforeach;
 
     ?>
-    <h1>Bienvenido/a:</h1>
+    <h3>Bienvenido/a Administrador:</h3>
     <?php
     foreach ($usuario as $key => $value) :
         foreach ($value as $v) :
@@ -71,10 +71,10 @@ if (!empty($usuario)) { ?>
     endforeach;
 
     ?>
-    <section class="parallax" id="section1">
+    <section class="seccion1" id="section1">
         <section class="wrap">
             <div>
-                <h2>Carta disponible</h2>
+                <h3>Carta disponible</h3>
             </div>
         <br><br>
         <div class="wrap column-2 carta">
@@ -121,7 +121,9 @@ if (!empty($usuario)) { ?>
                                     <p><?php echo $menus['plato_principal']; ?></p>
                                 </div>
                                 <div class="title-plato-carta">
-                                    <p><?php echo format_decimal($menus['precio']); ?> €</p>
+                                   <!-- <p><?php //echo format_decimal($menus['precio']); ?> €</p>-->
+                                    <p><?php echo $menus['precio']; ?> €</p>
+
                                 </div>
                             </div>
                         </div>

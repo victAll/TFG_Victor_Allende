@@ -62,14 +62,11 @@ if (!empty($creador)) { ?>
     endforeach;
 
     ?>
-
-
-
 <?php
 }
 ?>
 
-<section class="parallax" id="section1">
+<section class="seccion1" id="section1">
     <section class="wrap">
         <div class="contenedorReservas">
             <div class="muestraReservas">
@@ -79,12 +76,11 @@ if (!empty($creador)) { ?>
                 <br>
                 <h2><?php echo @$_SESSION['nombre']; ?> <?php echo @$_SESSION['apellido']; ?></h2>
                 <br>
-                <!--<td><a class="btn" href="index.php/?opcion=volver&id=<?php echo $_SESSION['dni']; ?>&redireccion=menu"
-                class="btn">Volver</a></td>-->
+                <h3>Todas las reservas</h3>
                 <br>
                 <?php
                 } ?>
-                <table>
+                <table class="reservas">
                     <br>
                     <thead>
                         <tr>
