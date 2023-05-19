@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="wravjIZUmaEtJjGKjZi2" name="Page-1">
-        <mxGraphModel dx="979" dy="565" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="583" math="0" shadow="1">
+        <mxGraphModel dx="955" dy="612" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="583" math="0" shadow="1">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -193,7 +193,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="23" value="Menu" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;fontSize=13;" parent="1" vertex="1">
-                    <mxGeometry x="560" y="160" width="280" height="230" as="geometry"/>
+                    <mxGeometry x="530" y="160" width="280" height="230" as="geometry"/>
                 </mxCell>
                 <mxCell id="24" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="23" vertex="1">
                     <mxGeometry y="30" width="280" height="30" as="geometry"/>
@@ -283,7 +283,7 @@
                     <mxGeometry x="70" y="40" width="120" height="110" as="geometry"/>
                 </mxCell>
                 <mxCell id="83" value="" style="image;html=1;image=img/lib/clip_art/people/Waiter_Black_128x128.png;fontSize=45;" parent="1" vertex="1">
-                    <mxGeometry x="715" y="40" width="110" height="110" as="geometry"/>
+                    <mxGeometry x="615" y="40" width="110" height="110" as="geometry"/>
                 </mxCell>
                 <mxCell id="84" value="" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image;image=img/lib/allied_telesis/computer_and_terminals/Laptop.svg;fontSize=45;" parent="1" vertex="1">
                     <mxGeometry x="400" y="350" width="81.43" height="82.6" as="geometry"/>

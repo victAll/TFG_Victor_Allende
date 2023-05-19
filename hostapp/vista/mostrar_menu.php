@@ -69,7 +69,7 @@ if (!empty($creador)) { ?>
                     <br>
                 <?php
                 } ?>
-                <table>
+                <table class="reservas">
                     <br>
                     <thead>
                         <tr>
