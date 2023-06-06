@@ -102,12 +102,11 @@ class ModeloController
         $apellido = $_POST['apellido'];
         $dni = $_POST['dni'];
         $correo = $_POST['email'];
-        $password = md5($_POST['password']);
+        $password = $_POST['password'];
 
         $tipo = $_POST['tipo'];
         $campos = " (nombre, apellido, dni, email, password, tipo_usuario) ";
 
-        $data = "'" . $nombre . "' ,'" . $apellido . "','" . $dni . "','" . $correo . "','" . $password . "','" . $tipo . "'";
 
         $registrar = new Modelo();
 
@@ -118,13 +117,15 @@ class ModeloController
             $resExiste = $errores; // pasamos los errores de falla de formulario a la vista
             require_once("vista/registro.php");
         } else {
+            
             //validar si el usuario existe antes de registrar
             $usuario = $registrar->mostrar("usuarios", "*", " dni='" . $dni . "'");
             if ($usuario != null) {
                 $resExiste = "El usuario con dni: " . $dni . " ya está registrado, inténtalo nuevamente...";
                 require_once("vista/registro.php");
             } else {
-
+                $password = md5($_POST['password']);
+                $data = "'" . $nombre . "' ,'" . $apellido . "','" . $dni . "','" . $correo . "','" . $password . "','" . $tipo . "'";
                 $registrar->insertar(" usuarios ", $campos, $data);
                 $usuario = $registrar->mostrar("usuarios", "*", "dni='" . $dni . "'");
                 $menu = $registrar->mostrar("menu", "*", 1);
